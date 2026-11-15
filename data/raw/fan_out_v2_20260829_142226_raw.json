@@ -1,0 +1,987 @@
+{
+ "spec": {
+  "key": "fan_out",
+  "title": "Does more parallelism buy anything on this endpoint?",
+  "agent": "litreview",
+  "inputs": [
+   {
+    "document_id": 1,
+    "max_claims": 80
+   }
+  ],
+  "factors": [
+   {
+    "name": "workers",
+    "setting": "",
+    "levels": [
+     "1",
+     "2",
+     "4"
+    ],
+    "payload_key": "max_workers"
+   }
+  ],
+  "repeats": 5,
+  "notes": "Workers are something you control; the endpoint's queue depth is not. If wall clock does not fall as workers rise, the endpoint is serialising and the extra workers are buying rate-limit risk for nothing. Five repeats because latency on a shared endpoint is noisy, and three runs cannot tell a real effect from a busy minute.",
+  "order": "random",
+  "seed": 12345,
+  "baseline": "workers=1"
+ },
+ "when": "2026-08-29 14:22",
+ "n_runs": 15,
+ "pool_size": 55,
+ "drift": null,
+ "baseline": "workers=1",
+ "cells": [
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "runs": 5,
+   "failures": 0,
+   "seconds": {
+    "n": 5,
+    "mean": 920.08,
+    "median": 812.8,
+    "sd": 383.395,
+    "min": 675.3,
+    "max": 1596.3,
+    "ci95": [
+     708.38,
+     1260.98
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 3715.4,
+    "median": 3502,
+    "sd": 390.775,
+    "min": 3310,
+    "max": 4199,
+    "ci95": [
+     3425.2,
+     4021.2
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 5.4,
+    "median": 5,
+    "sd": 0.894,
+    "min": 5,
+    "max": 7,
+    "ci95": [
+     5.0,
+     6.2
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 1,
+    "median": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 5,
+    "mean": 16,
+    "median": 16,
+    "sd": 1.225,
+    "min": 14,
+    "max": 17,
+    "ci95": [
+     15.0,
+     16.8
+    ]
+   },
+   "references_matched": {
+    "n": 5,
+    "mean": 0.4,
+    "median": 0,
+    "sd": 0.894,
+    "min": 0,
+    "max": 2,
+    "ci95": [
+     0.0,
+     1.2
+    ]
+   },
+   "quality": {
+    "runs": 5,
+    "verbatim_rate": 0.452,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.025,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.291,
+    "corroborated_rate": 1.0,
+    "stability": 0.344
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "runs": 5,
+   "failures": 1,
+   "seconds": {
+    "n": 5,
+    "mean": 568.24,
+    "median": 652.0,
+    "sd": 329.408,
+    "min": 10.4,
+    "max": 809.5,
+    "ci95": [
+     280.36,
+     777.48
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 2921.6,
+    "median": 3310,
+    "sd": 1685.116,
+    "min": 0,
+    "max": 4064,
+    "ci95": [
+     1446.8,
+     3913.2
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 4,
+    "median": 5,
+    "sd": 2.236,
+    "min": 0,
+    "max": 5,
+    "ci95": [
+     2.0,
+     5.0
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 0.8,
+    "median": 1,
+    "sd": 0.447,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.4,
+     1.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 4,
+    "mean": 15,
+    "median": 15.0,
+    "sd": 1.155,
+    "min": 14,
+    "max": 16,
+    "ci95": [
+     14.0,
+     16.0
+    ]
+   },
+   "references_matched": {
+    "n": 4,
+    "mean": 0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "quality": {
+    "runs": 4,
+    "verbatim_rate": 0.419,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.273,
+    "corroborated_rate": 1.0,
+    "stability": 0.436
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "runs": 5,
+   "failures": 0,
+   "seconds": {
+    "n": 5,
+    "mean": 736.58,
+    "median": 739.7,
+    "sd": 35.364,
+    "min": 684.1,
+    "max": 783.7,
+    "ci95": [
+     706.5,
+     765.3
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 3914.8,
+    "median": 4064,
+    "sd": 251.195,
+    "min": 3643,
+    "max": 4160,
+    "ci95": [
+     3727.2,
+     4102.4
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 5,
+    "median": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5,
+    "ci95": [
+     5.0,
+     5.0
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 1,
+    "median": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 5,
+    "mean": 18,
+    "median": 17,
+    "sd": 3.391,
+    "min": 16,
+    "max": 24,
+    "ci95": [
+     16.2,
+     21.0
+    ]
+   },
+   "references_matched": {
+    "n": 5,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "quality": {
+    "runs": 5,
+    "verbatim_rate": 0.325,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.327,
+    "corroborated_rate": 0.842,
+    "stability": 0.305
+   }
+  }
+ ],
+ "records": [
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 865,
+   "state": "done",
+   "seconds": 1596.3,
+   "cost": 0.0,
+   "input_tokens": 17144,
+   "output_tokens": 4199,
+   "calls": 7,
+   "repairs": 1,
+   "started_at": 1787998512.945152,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 2,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.125
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 866,
+   "state": "done",
+   "seconds": 652.0,
+   "cost": 0.0,
+   "input_tokens": 14225,
+   "output_tokens": 3310,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788000109.4036262,
+   "outcome": {
+    "claims_extracted": 14,
+    "references_checked": 14,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 4,
+    "verbatim_rate": 0.714,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 867,
+   "state": "done",
+   "seconds": 561.1,
+   "cost": 0.0,
+   "input_tokens": 14225,
+   "output_tokens": 3170,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788000761.5229309,
+   "outcome": {
+    "claims_extracted": 14,
+    "references_checked": 14,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 4,
+    "verbatim_rate": 0.714,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 868,
+   "state": "done",
+   "seconds": 808.2,
+   "cost": 0.0,
+   "input_tokens": 15051,
+   "output_tokens": 4064,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788001322.7795196,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 869,
+   "state": "done",
+   "seconds": 675.3,
+   "cost": 0.0,
+   "input_tokens": 14225,
+   "output_tokens": 3310,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788002131.1731253,
+   "outcome": {
+    "claims_extracted": 14,
+    "references_checked": 14,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 4,
+    "verbatim_rate": 0.714,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 870,
+   "state": "done",
+   "seconds": 783.7,
+   "cost": 0.0,
+   "input_tokens": 15051,
+   "output_tokens": 4064,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788002806.687819,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 871,
+   "state": "done",
+   "seconds": 740.5,
+   "cost": 0.0,
+   "input_tokens": 15157,
+   "output_tokens": 4160,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788003590.540575,
+   "outcome": {
+    "claims_extracted": 24,
+    "references_checked": 24,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "across all platforms a 20 4 decrease in performance",
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "anymal c and anymal d show similar velocity tracking",
+     "anymal c shows a 21 3 increase",
+     "anymal d s slope shows measurable benefits",
+     "convergence rates are affected by morphologies and terrains",
+     "for linear velocity unitree go2 is 1 411 25 6 lower",
+     "linear velocity of anymal c is 971 steps 2 4",
+     "manager based control is required on rough terrain",
+     "manager based control is used for velocity tracking",
+     "manager based control shows significant improvements across all scenarios",
+     "on anymal c a 46 3 improvement",
+     "on anymal c an 86 5 improvement",
+     "on manager based control unitree go2 requires 36 74",
+     "robot morphology affects performance and convergence",
+     "rough terrain affects performance regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency of anymal c s performance is served",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the performance of anymal c shows a 21 3 increase",
+     "the reduction of anymal c s performance on uneven ground",
+     "the study produced three main findings",
+     "unitree go2 requires 108 whereas anymal c required 113"
+    ],
+    "fabricated_quotes": 22,
+    "verbatim_rate": 0.083,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 872,
+   "state": "done",
+   "seconds": 816.0,
+   "cost": 0.0,
+   "input_tokens": 14794,
+   "output_tokens": 3502,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788004331.265263,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "anymal c achieved 1 896 best anymal d 1 881 0 8 lower and go2 1 411 25 6 lower for linear velocity tracking",
+     "anymal c and anymal d achieve superior tracking performance compared to unitree go2 particularly in linear velocity trac",
+     "anymal c shows a drop from 39 31 to 31 84 19 0 anymal d from 39 35 to 32 20 18 2 and unitree go2 from 36 74 to 28 90 21 ",
+     "anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 on manager based flat terrain",
+     "average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "manager based control consistently achieves higher tracking accuracy than direct control with the difference being more ",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the study produced three main findings",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.647,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 873,
+   "state": "done",
+   "seconds": 812.8,
+   "cost": 0.0,
+   "input_tokens": 15051,
+   "output_tokens": 4064,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788005147.4390624,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 874,
+   "state": "done",
+   "seconds": 734.9,
+   "cost": 0.0,
+   "input_tokens": 14794,
+   "output_tokens": 3643,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788005960.4765809,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "anymal c achieved 1 896 best anymal d 1 881 0 8 lower and go2 1 411 25 6 lower for linear velocity tracking",
+     "anymal c and anymal d achieve superior tracking performance compared to unitree go2 particularly in linear velocity trac",
+     "anymal c shows a drop from 39 31 to 31 84 19 0 anymal d from 39 35 to 32 20 18 2 and unitree go2 from 36 74 to 28 90 21 ",
+     "anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 on manager based flat terrain",
+     "average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "manager based control consistently achieves higher tracking accuracy than direct control with the difference being more ",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the study produced three main findings",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.647,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 875,
+   "state": "done",
+   "seconds": 809.5,
+   "cost": 0.0,
+   "input_tokens": 15051,
+   "output_tokens": 4064,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788006695.5180125,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 876,
+   "state": "done",
+   "seconds": 739.7,
+   "cost": 0.0,
+   "input_tokens": 14794,
+   "output_tokens": 3643,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788007505.2167737,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "anymal c achieved 1 896 best anymal d 1 881 0 8 lower and go2 1 411 25 6 lower for linear velocity tracking",
+     "anymal c and anymal d achieve superior tracking performance compared to unitree go2 particularly in linear velocity trac",
+     "anymal c shows a drop from 39 31 to 31 84 19 0 anymal d from 39 35 to 32 20 18 2 and unitree go2 from 36 74 to 28 90 21 ",
+     "anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 on manager based flat terrain",
+     "average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "manager based control consistently achieves higher tracking accuracy than direct control with the difference being more ",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the study produced three main findings",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.647,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 877,
+   "state": "done",
+   "seconds": 684.1,
+   "cost": 0.0,
+   "input_tokens": 15051,
+   "output_tokens": 4064,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788008245.0672975,
+   "outcome": {
+    "claims_extracted": 16,
+    "references_checked": 16,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "manager based control outperforms direct control",
+     "manager based control outperforms direct control across all scenarios",
+     "robot morphology impacts performance and convergence",
+     "rough terrain affects performance and convergence regardless of architecture",
+     "the anymal robot uses dc motor models",
+     "the consistency gap is served by performance",
+     "the exact quoted text",
+     "the figure clearly shows performance from flat to rough terrain",
+     "the figure presents performance of final performance",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the modular architecture is transparent and tunable",
+     "the performance gap increases with control demands",
+     "the results reveal performance and velocity tracking",
+     "the slower convergence yields measurable benefits",
+     "the study produced three main findings"
+    ],
+    "fabricated_quotes": 14,
+    "verbatim_rate": 0.125,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 878,
+   "state": "done",
+   "seconds": 700.0,
+   "cost": 0.0,
+   "input_tokens": 14794,
+   "output_tokens": 3502,
+   "calls": 5,
+   "repairs": 1,
+   "started_at": 1788008929.3876762,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "all code and configurations are open sourced to support reproducibility and community extension",
+     "anymal c achieved 1 896 best anymal d 1 881 0 8 lower and go2 1 411 25 6 lower for linear velocity tracking",
+     "anymal c and anymal d achieve superior tracking performance compared to unitree go2 particularly in linear velocity trac",
+     "anymal c shows a drop from 39 31 to 31 84 19 0 anymal d from 39 35 to 32 20 18 2 and unitree go2 from 36 74 to 28 90 21 ",
+     "anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 on manager based flat terrain",
+     "average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "manager based control consistently achieves higher tracking accuracy than direct control with the difference being more ",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "the exact quoted text",
+     "the harl isaac lab integration provides a reproducible foundation for future multi agent limb level control research",
+     "the study produced three main findings",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.647,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 879,
+   "state": "running",
+   "seconds": 10.4,
+   "cost": 0.0,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "calls": 0,
+   "repairs": 0,
+   "started_at": 1788009629.5747323,
+   "outcome": {}
+  }
+ ]
+}

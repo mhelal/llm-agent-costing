@@ -1,0 +1,130 @@
+[
+ {
+  "file": "app/agents/litreview_agent.py",
+  "symbol": "_windows",
+  "lines": [
+   288,
+   307
+  ]
+ },
+ {
+  "file": "app/agents/litreview_agent.py",
+  "symbol": "check_review",
+  "lines": [
+   310,
+   665
+  ]
+ },
+ {
+  "file": "app/orchestrator.py",
+  "symbol": "map_reduce",
+  "lines": [
+   40,
+   86
+  ]
+ },
+ {
+  "file": "app/orchestrator.py",
+  "symbol": "critic_loop",
+  "lines": [
+   89,
+   115
+  ]
+ },
+ {
+  "file": "app/orchestrator.py",
+  "symbol": "pipeline",
+  "lines": [
+   26,
+   37
+  ]
+ },
+ {
+  "file": "app/contracts.py",
+  "symbol": "CitationClaim",
+  "lines": [
+   145,
+   167
+  ]
+ },
+ {
+  "file": "app/contracts.py",
+  "symbol": "ClaimCheck",
+  "lines": [
+   183,
+   191
+  ]
+ },
+ {
+  "file": "app/agents/litreview_agent.py",
+  "symbol": "ExtractedClaims",
+  "lines": [
+   132,
+   154
+  ]
+ },
+ {
+  "file": "app/kernel.py",
+  "symbol": "verify_quotes",
+  "lines": [
+   560,
+   572
+  ]
+ },
+ {
+  "file": "app/kernel.py",
+  "symbol": "structured",
+  "lines": [
+   384,
+   471
+  ]
+ },
+ {
+  "file": "app/runlog.py",
+  "symbol": "event",
+  "lines": [
+   65,
+   81
+  ]
+ },
+ {
+  "file": "app/quality.py",
+  "symbol": "verifiability",
+  "lines": [
+   73,
+   115
+  ]
+ },
+ {
+  "file": "app/quality.py",
+  "symbol": "quality_for_cell",
+  "lines": [
+   261,
+   294
+  ]
+ },
+ {
+  "file": "app/quality.py",
+  "symbol": "stability",
+  "lines": [
+   238,
+   255
+  ]
+ },
+ {
+  "file": "app/quality.py",
+  "symbol": "pooled_recall",
+  "lines": [
+   210,
+   214
+  ]
+ },
+ {
+  "file": "app/quality.py",
+  "symbol": "pooled_precision_proxy",
+  "lines": [
+   217,
+   232
+  ]
+ }
+]

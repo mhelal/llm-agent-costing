@@ -1,0 +1,2511 @@
+{
+ "spec": {
+  "key": "partitioning",
+  "title": "Static against dynamic partitioning under an exogenous queue",
+  "agent": "litreview",
+  "inputs": [
+   {
+    "document_id": 1,
+    "max_claims": 80
+   }
+  ],
+  "factors": [
+   {
+    "name": "window",
+    "setting": "",
+    "levels": [
+     "6000",
+     "14000",
+     "28000"
+    ],
+    "payload_key": "extract_window"
+   },
+   {
+    "name": "workers",
+    "setting": "",
+    "levels": [
+     "1",
+     "2",
+     "4"
+    ],
+    "payload_key": "max_workers"
+   }
+  ],
+  "repeats": 3,
+  "notes": "The thesis's central experiment, transposed: partition size against worker count, measuring CCR, load imbalance and achieved speed-up. Where CCR exceeds one the coarse window should win, which is the opposite of what the DAG scheduling literature predicts \u2014 it assumes calls are free to make. Five repeats because the queue is someone else's traffic.",
+  "order": "random",
+  "seed": 12345,
+  "baseline": "window=14000, workers=2"
+ },
+ "when": "2026-08-28 03:47",
+ "n_runs": 27,
+ "pool_size": 201,
+ "drift": null,
+ "baseline": "window=14000, workers=2",
+ "cells": [
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "1"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 680.4,
+    "median": 625.7,
+    "sd": 181.153,
+    "min": 532.9,
+    "max": 882.6,
+    "ci95": [
+     532.9,
+     882.6
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 15730,
+    "median": 17151,
+    "sd": 5452.198,
+    "min": 9708,
+    "max": 20331,
+    "ci95": [
+     9708.0,
+     20331.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 33.667,
+    "median": 32,
+    "sd": 4.726,
+    "min": 30,
+    "max": 39,
+    "ci95": [
+     30.0,
+     39.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 50.667,
+    "median": 46,
+    "sd": 23.352,
+    "min": 30,
+    "max": 76,
+    "ci95": [
+     30.0,
+     76.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 24,
+    "median": 22,
+    "sd": 4.359,
+    "min": 21,
+    "max": 29,
+    "ci95": [
+     21.0,
+     29.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.51,
+    "malformed_reference_rate": 0.077,
+    "resolution_rate": 0.546,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.252,
+    "corroborated_rate": 0.882,
+    "stability": 0.277
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "2"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 568.967,
+    "median": 651.5,
+    "sd": 415.297,
+    "min": 118.6,
+    "max": 936.8,
+    "ci95": [
+     118.6,
+     936.8
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 7137,
+    "median": 7737,
+    "sd": 1152.754,
+    "min": 5808,
+    "max": 7866,
+    "ci95": [
+     5808.0,
+     7866.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 21,
+    "median": 22,
+    "sd": 1.732,
+    "min": 19,
+    "max": 22,
+    "ci95": [
+     19.0,
+     22.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 1.333,
+    "median": 2,
+    "sd": 1.155,
+    "min": 0,
+    "max": 2,
+    "ci95": [
+     0.0,
+     2.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 24.667,
+    "median": 23,
+    "sd": 2.887,
+    "min": 23,
+    "max": 28,
+    "ci95": [
+     23.0,
+     28.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 12.667,
+    "median": 12,
+    "sd": 1.155,
+    "min": 12,
+    "max": 14,
+    "ci95": [
+     12.0,
+     14.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.731,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.515,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.122,
+    "corroborated_rate": 0.976,
+    "stability": 0.763
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "4"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 577.3,
+    "median": 620.6,
+    "sd": 105.163,
+    "min": 457.4,
+    "max": 653.9,
+    "ci95": [
+     457.4,
+     653.9
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 7901,
+    "median": 8156,
+    "sd": 1092.062,
+    "min": 6704,
+    "max": 8843,
+    "ci95": [
+     6704.0,
+     8843.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 21,
+    "median": 22,
+    "sd": 1.732,
+    "min": 19,
+    "max": 22,
+    "ci95": [
+     19.0,
+     22.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 1.667,
+    "median": 2,
+    "sd": 0.577,
+    "min": 1,
+    "max": 2,
+    "ci95": [
+     1.0,
+     2.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 31.667,
+    "median": 36,
+    "sd": 7.506,
+    "min": 23,
+    "max": 36,
+    "ci95": [
+     23.0,
+     36.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 12,
+    "median": 12,
+    "sd": 0.0,
+    "min": 12,
+    "max": 12,
+    "ci95": [
+     12.0,
+     12.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.709,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.396,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.157,
+    "corroborated_rate": 1.0,
+    "stability": 0.759
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "4"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 80.433,
+    "median": 82.2,
+    "sd": 19.211,
+    "min": 60.4,
+    "max": 98.7,
+    "ci95": [
+     60.4,
+     98.7
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 1928,
+    "median": 2078,
+    "sd": 279.077,
+    "min": 1606,
+    "max": 2100,
+    "ci95": [
+     1606.0,
+     2100.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 2.333,
+    "median": 2,
+    "sd": 0.577,
+    "min": 2,
+    "max": 3,
+    "ci95": [
+     2.0,
+     3.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 4.667,
+    "median": 5,
+    "sd": 3.512,
+    "min": 1,
+    "max": 8,
+    "ci95": [
+     1.0,
+     8.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 0.333,
+    "median": 0,
+    "sd": 0.577,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.333,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.023,
+    "corroborated_rate": 0.4,
+    "stability": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "4"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 597.533,
+    "median": 639.9,
+    "sd": 201.42,
+    "min": 378.3,
+    "max": 774.4,
+    "ci95": [
+     378.3,
+     774.4
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 12981.333,
+    "median": 10772,
+    "sd": 5808.194,
+    "min": 8602,
+    "max": 19570,
+    "ci95": [
+     8602.0,
+     19570.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 25.667,
+    "median": 31,
+    "sd": 11.015,
+    "min": 13,
+    "max": 33,
+    "ci95": [
+     13.0,
+     33.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0.333,
+    "median": 0,
+    "sd": 0.577,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 48,
+    "median": 41,
+    "sd": 17.578,
+    "min": 35,
+    "max": 68,
+    "ci95": [
+     35.0,
+     68.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 16,
+    "median": 22,
+    "sd": 10.392,
+    "min": 4,
+    "max": 22,
+    "ci95": [
+     4.0,
+     22.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.371,
+    "malformed_reference_rate": 0.203,
+    "resolution_rate": 0.408,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.239,
+    "corroborated_rate": 0.866,
+    "stability": 0.198
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "1"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 469.8,
+    "median": 369.0,
+    "sd": 293.961,
+    "min": 239.5,
+    "max": 800.9,
+    "ci95": [
+     239.5,
+     800.9
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 5695.333,
+    "median": 4872,
+    "sd": 1669.883,
+    "min": 4597,
+    "max": 7617,
+    "ci95": [
+     4597.0,
+     7617.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 18.667,
+    "median": 17,
+    "sd": 2.887,
+    "min": 17,
+    "max": 22,
+    "ci95": [
+     17.0,
+     22.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 1.333,
+    "median": 1,
+    "sd": 0.577,
+    "min": 1,
+    "max": 2,
+    "ci95": [
+     1.0,
+     2.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 28.333,
+    "median": 31,
+    "sd": 4.619,
+    "min": 23,
+    "max": 31,
+    "ci95": [
+     23.0,
+     31.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 10.667,
+    "median": 10,
+    "sd": 1.155,
+    "min": 10,
+    "max": 12,
+    "ci95": [
+     10.0,
+     12.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.762,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.389,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.141,
+    "corroborated_rate": 1.0,
+    "stability": 0.725
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "1"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 66.333,
+    "median": 51.4,
+    "sd": 39.667,
+    "min": 36.3,
+    "max": 111.3,
+    "ci95": [
+     36.3,
+     111.3
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 1884.333,
+    "median": 1787,
+    "sd": 375.581,
+    "min": 1567,
+    "max": 2299,
+    "ci95": [
+     1567.0,
+     2299.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 2.333,
+    "median": 2,
+    "sd": 0.577,
+    "min": 2,
+    "max": 3,
+    "ci95": [
+     2.0,
+     3.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 4,
+    "median": 5,
+    "sd": 2.646,
+    "min": 1,
+    "max": 6,
+    "ci95": [
+     1.0,
+     6.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 0.333,
+    "median": 0,
+    "sd": 0.577,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.333,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.02,
+    "corroborated_rate": 0.511,
+    "stability": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "2"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 616.833,
+    "median": 627.6,
+    "sd": 27.857,
+    "min": 585.2,
+    "max": 637.7,
+    "ci95": [
+     585.2,
+     637.7
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 13650.333,
+    "median": 10456,
+    "sd": 5544.01,
+    "min": 10443,
+    "max": 20052,
+    "ci95": [
+     10443.0,
+     20052.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 26.667,
+    "median": 29,
+    "sd": 4.933,
+    "min": 21,
+    "max": 30,
+    "ci95": [
+     21.0,
+     30.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0.333,
+    "median": 0,
+    "sd": 0.577,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 53.333,
+    "median": 62,
+    "sd": 26.102,
+    "min": 24,
+    "max": 74,
+    "ci95": [
+     24.0,
+     74.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 17.333,
+    "median": 20,
+    "sd": 5.508,
+    "min": 11,
+    "max": 21,
+    "ci95": [
+     11.0,
+     21.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.372,
+    "malformed_reference_rate": 0.128,
+    "resolution_rate": 0.355,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.265,
+    "corroborated_rate": 0.891,
+    "stability": 0.214
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "2"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 55.867,
+    "median": 51.8,
+    "sd": 35.774,
+    "min": 22.3,
+    "max": 93.5,
+    "ci95": [
+     22.3,
+     93.5
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 1706.667,
+    "median": 1462,
+    "sd": 648.587,
+    "min": 1216,
+    "max": 2442,
+    "ci95": [
+     1216.0,
+     2442.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 2.667,
+    "median": 3,
+    "sd": 0.577,
+    "min": 2,
+    "max": 3,
+    "ci95": [
+     2.0,
+     3.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 2.333,
+    "median": 1,
+    "sd": 2.309,
+    "min": 1,
+    "max": 5,
+    "ci95": [
+     1.0,
+     5.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 0.667,
+    "median": 1,
+    "sd": 0.577,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.667,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.012,
+    "corroborated_rate": 0.8,
+    "stability": 0.333
+   }
+  }
+ ],
+ "records": [
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 781,
+   "state": "done",
+   "seconds": 532.9,
+   "cost": 0.0,
+   "input_tokens": 58661,
+   "output_tokens": 20331,
+   "calls": 30,
+   "repairs": 0,
+   "started_at": 1787874124.7598271,
+   "outcome": {
+    "claims_extracted": 76,
+    "references_checked": 76,
+    "references_matched": 21,
+    "blocked": true,
+    "claim_keys": [
+     "a ray caster sensor with 0 1 metre resolution over a 1 6 1 0 metre area provides height scan observations on rough terra",
+     "across all platforms average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "actor and critic networks use three hidden layers with elu activation",
+     "anymal d employs the same actuator network configuration as no public d specific network is available",
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "boston dynamics spot uses delayed pd control for hip actuators and remotized pd control for knees with hip torque limit ",
+     "both share identical ppo hyperparameters and reward functions isolating architectural effects",
+     "contact penalties discourage non foot contacts",
+     "convergence rate was computed as final performance initial performance training steps",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "domain randomisation includes friction variation 20 mass variation 5 kg centre of mass shifts 0 05 m base position and v",
+     "each robot s individual properties were retained as configured in isaac lab ensuring realistic training dynamics",
+     "efficient vision driven locomotion is advancing rapidly",
+     "energy efficiency penalties penalise joint torque and acceleration",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "fig 1 illustrates the performance comparison between direct and manager based control for anymal c the figure shows mean",
+     "flat terrain provides a baseline for fundamental locomotion ability a plane surface with static and dynamic friction of ",
+     "four robots were selected to represent a spectrum of physical capabilities anymal c 50kg uses an lstm based actuator net",
+     "future work should focus on further optimising the manager based framework and exploring how these findings translate to",
+     "heterogeneous agent reinforcement learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "isaac lab simulates thousands of robot instances in parallel on a single gpu reducing training time from days to hours",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "locomamba vision language model for quadruped robot locomotion",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "manager based control exhibits substantially higher mean reward and longer episode lengths under both terrain conditions",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "nvidia isaac lab version 5 1 was installed on ubuntu 22 04 lts with cuda 12 1 running on a workstation equipped with an ",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "on flat terrain anymal c achieved a mean reward of 39 3 while anymal d scored 31 8 and spot 29 5 this trend persisted on",
+     "on flat terrain the manager based system stabilises at a high reward level within approximately 500 iterations whereas t",
+     "performance was measured using mean episode reward sum of all rewards per episode episode length maximum 1000 steps 20 s",
+     "ppo was implemented via rsl rl with the following hyperparameters steps per environment 24 horizon 0 48s maximum iterati",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "rough terrain is procedurally generated with random patches slopes stair height variation and obstacles at maximum heigh",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "stability penalties discourage vertical velocity excessive roll pitch angular velocity and undesirable orientation",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the convergence plots fig 2 show that the manager based architecture not only reaches a higher final performance but als",
+     "the data also highlights the importance of robot morphology with lighter more agile designs like anymal c outperforming ",
+     "the data reveals a clear hierarchy of physical capability anymal c 50kg consistently outperformed anymal d 100kg and spo",
+     "the exact quoted text",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the intersection of multi agent reinforcement learning and quadruped locomotion has seen substantive progress beyond lim",
+     "the lighter weight and higher torque to weight ratio of anymal c likely contribute to its superior agility and energy ef",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the modular separation of command handling observation processing and reward computation allows for more efficient learn",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the platform provides high fidelity physics modelling including contact forces friction and dynamics with pre built asse",
+     "the results demonstrate that the manager based control architecture is superior to the direct approach for quadruped loc",
+     "the reward function combines multiple components primary task rewards use exponential tracking for linear and angular ve",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the total reward is a weighted sum with manager based and direct workflows using weights calibrated separately",
+     "the unitree go2 despite its light weight 15kg performed poorly with a mean reward of only 18 5 on flat terrain and 15 2 ",
+     "these hyperparameters were adopted from 3 to ensure fair cross morphology comparison",
+     "this faster convergence indicates that the modular framework provides a more robust and efficient learning environment l",
+     "this quantified degradation establishes a concrete baseline for future improvements in terrain adaptive control",
+     "this suggests that while mass is a significant factor other design elements such as joint compliance control bandwidth o",
+     "two workflow architectures were compared the manager based approach uses isaac lab s modular mdp framework separating co",
+     "understanding domain randomization for sim to real transfer",
+     "unitree go2 15kg uses a dc motor model with torque limit 23 5 n m and velocity limit 30 rad s",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 31,
+    "verbatim_rate": 0.592,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.276
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 782,
+   "state": "done",
+   "seconds": 651.5,
+   "cost": 0.0,
+   "input_tokens": 57934,
+   "output_tokens": 7737,
+   "calls": 22,
+   "repairs": 2,
+   "started_at": 1787874657.8198218,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.522
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 783,
+   "state": "done",
+   "seconds": 936.8,
+   "cost": 0.0,
+   "input_tokens": 57934,
+   "output_tokens": 7866,
+   "calls": 22,
+   "repairs": 2,
+   "started_at": 1787875309.4685817,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.522
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 784,
+   "state": "done",
+   "seconds": 457.4,
+   "cost": 0.0,
+   "input_tokens": 46708,
+   "output_tokens": 6704,
+   "calls": 19,
+   "repairs": 1,
+   "started_at": 1787876246.3989925,
+   "outcome": {
+    "claims_extracted": 36,
+    "references_checked": 36,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robot morphology significantly influenced both final performance and convergence",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the figure clearly demonstrates that every robot experiences a substantial performance reduction when transitioning from",
+     "the figure presents two complementary views overall convergence rate slope of improvement and sample efficiency measured",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "the slower convergence of go2 despite identical actuator networks suggests mechanical design improvements provide measur",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 11,
+    "verbatim_rate": 0.694,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.333
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 785,
+   "state": "done",
+   "seconds": 82.2,
+   "cost": 0.0,
+   "input_tokens": 17122,
+   "output_tokens": 2100,
+   "calls": 2,
+   "repairs": 0,
+   "started_at": 1787876703.9127703,
+   "outcome": {
+    "claims_extracted": 5,
+    "references_checked": 5,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "nvidia isaac lab introduces two distinct workflow architectures for controlling robotic agents a manager based approach ",
+     "the anymal robots c and d exhibit superior tracking performance and faster convergence compared to the unitree go2 the a",
+     "the integration of the heterogeneous agent reinforcement learning harl library with isaac lab has been successfully comp",
+     "the manager based control architecture demonstrates significant performance advantages over the direct control method sp",
+     "the transition from flat to rough terrain results in a substantial degradation in performance across all robot platforms"
+    ],
+    "fabricated_quotes": 5,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 786,
+   "state": "done",
+   "seconds": 653.9,
+   "cost": 0.0,
+   "input_tokens": 58752,
+   "output_tokens": 8156,
+   "calls": 22,
+   "repairs": 2,
+   "started_at": 1787876786.2480223,
+   "outcome": {
+    "claims_extracted": 36,
+    "references_checked": 36,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robot morphology significantly influenced both final performance and convergence",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the figure clearly demonstrates that every robot experiences a substantial performance reduction when transitioning from",
+     "the figure presents two complementary views overall convergence rate slope of improvement and sample efficiency measured",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "the slower convergence of go2 despite identical actuator networks suggests mechanical design improvements provide measur",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 11,
+    "verbatim_rate": 0.694,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.333
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 787,
+   "state": "done",
+   "seconds": 639.9,
+   "cost": 0.0,
+   "input_tokens": 36858,
+   "output_tokens": 10772,
+   "calls": 13,
+   "repairs": 1,
+   "started_at": 1787877440.2936265,
+   "outcome": {
+    "claims_extracted": 68,
+    "references_checked": 68,
+    "references_matched": 4,
+    "blocked": true,
+    "claim_keys": [
+     "a ray caster sensor with 0 1 metre resolution over a 1 6 1 0 metre area provides height scan observations on rough terra",
+     "across all platforms average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "actor and critic networks use three hidden layers with elu activation",
+     "anymal c 50kg achieved the highest mean reward 39 3 and longest episode length 995 steps on flat terrain while unitree g",
+     "anymal d employs the same actuator network configuration as no public d specific network is available",
+     "archical manager based con trol substantially outperforms direct monolithic control with the performance gap widening fr",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "boston dynamics spot uses delayed pd control for hip actuators and remotized pd control for knees with hip torque limit ",
+     "both share identical ppo hyperparameters and reward functions isolating architectural effects",
+     "convergence rate was computed as final performance initial performance training steps",
+     "conversely unitree go2 and spot with their lower mass and higher velocity limits are likely more adept at rapid manoeuvr",
+     "domain randomisation includes friction variation 20 mass variation 5 kg centre of mass shifts 0 05 m base position and v",
+     "each robot s individual properties were retained as configured in isaac lab ensuring realistic training dynamics",
+     "eighth understanding domain randomization for sim to real transfer",
+     "eleventh benchmarking animal level agility with quadruped robots",
+     "energy efficiency penalties penalise joint torque and acceleration contact penalties discourage non foot contacts",
+     "fifth reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "fig 1 illustrates the performance comparison between direct and manager based control for anymal c the figure shows mean",
+     "flat terrain provides a baseline for fundamental locomotion ability a plane surface with static and dynamic friction of ",
+     "four robots were selected to represent a spectrum of physical capabilities anymal c 50kg uses an lstm based actuator net",
+     "fourth isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "future work should focus on developing adaptive reward functions that can dynamically adjust to the specific strengths a",
+     "heavier robots with higher torque limits demonstrated better stability and faster convergence on flat terrain while ligh",
+     "isaac lab simulates thousands of robot instances in parallel on a single gpu reducing training time from days to hours",
+     "its modular design allows for independent optimisation of perception command interpretation and motor control leading to",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "manager based control exhibits substantially higher mean reward and longer episode lengths under both terrain conditions",
+     "ninth heterogeneous agent reinforcement learning",
+     "nvidia isaac lab version 5 1 was installed on ubuntu 22 04 lts with cuda 12 1 running on a workstation equipped with an ",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "on rough terrain anymal c maintained its lead reward 31 8 length 971 but the gap narrowed as lighter robots like spot re",
+     "performance was measured using mean episode reward sum of all rewards per episode episode length maximum 1000 steps 20 s",
+     "ppo was implemented via rsl rl with the following hyperparameters steps per environment 24 horizon 0 48s maximum iterati",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "rough terrain is procedurally generated with random patches slopes stair height variation and obstacles at maximum heigh",
+     "second terrain difficulty induces a quantifiable 20 degradation in reward and tracking met rics across all platforms est",
+     "seventh sim to real transfer of robotic control with dynamics randomization",
+     "sixth proximal policy optimization algorithms",
+     "stability penalties discourage vertical velocity excessive roll pitch angular velocity and undesirable orientation",
+     "tenth multi agent reinforcement learning for single quadruped robot locomotion",
+     "the comparison of robot morphologies revealed that physical design parameters mass torque and velocity limits have a pro",
+     "the convergence rate improvement per training step was highest for anymal c 0 026 and lowest for unitree go2 0 018 indic",
+     "the data indicates that while algorithmic improvements like the manager based approach are necessary they must be paired",
+     "the data reveals a clear trade off between payload capacity and agility anymal c with its high torque and mass excels in",
+     "the exact quoted text",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the impact of terrain difficulty was consistent across all morphologies with rough terrain reducing performance by appro",
+     "the manager based control architecture emerged as the superior approach for complex quadruped locomotion tasks",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the most significant performance variation was observed between robot morphologies",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the platform provides high fidelity physics modelling including contact forces friction and dynamics with pre built asse",
+     "the quadrrl benchmark successfully isolated the effects of architecture terrain and morphology providing a quantitative ",
+     "the reward function combines multiple components primary task rewards use exponential tracking for linear and angular ve",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the total reward is a weighted sum with manager based and direct workflows using weights calibrated separately",
+     "these findings suggest that selecting the appropriate robot morphology is critical for specific mission profiles such as",
+     "these hyperparameters were adopted from 3 to ensure fair cross morphology comparison",
+     "third robot morphology significantly affects both convergence speed and final tracking accuracy anymal robots converge t",
+     "thirteenth whole body constrained learning for legged locomotion via hierarchical optimization",
+     "this highlights the importance of robust sensor fusion and adaptive control strategies for real world deployment where e",
+     "this quantified degradation establishes a concrete baseline for the impact of environmental uncertainty on quadruped per",
+     "this suggests that heavier robots with higher torque limits are better suited for stable high speed locomotion on flat s",
+     "twelfth learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "two workflow architectures were compared the manager based approach uses isaac lab s modular mdp framework separating co",
+     "unitree go2 15kg uses a dc motor model with torque limit 23 5 n m and velocity limit 30 rad s"
+    ],
+    "fabricated_quotes": 39,
+    "verbatim_rate": 0.426,
+    "malformed_reference_rate": 0.056,
+    "resolution_rate": 0.059
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 788,
+   "state": "done",
+   "seconds": 98.7,
+   "cost": 0.0,
+   "input_tokens": 17311,
+   "output_tokens": 2078,
+   "calls": 2,
+   "repairs": 0,
+   "started_at": 1787878080.3275874,
+   "outcome": {
+    "claims_extracted": 8,
+    "references_checked": 8,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "experimental results show that manager based control consistently outperforms direct control across all scenarios with a",
+     "nvidia isaac lab introduces two distinct workflow architectures for robot control a manager based approach that emphasis",
+     "robot morphology significantly influences both final performance and convergence with the anymal platforms converging mu",
+     "rough terrain adversely affects all robots regardless of architecture with average episode reward falling by 20 4 and li",
+     "the anymal robots c and d achieve superior tracking performance compared to the unitree go2 particularly in linear veloc",
+     "the integration of the harl library with isaac lab provides a reproducible foundation for future multi agent reinforceme",
+     "the manager based workflow separates command handling action processing observation management and reward computation in",
+     "the performance gap between the two architectures widens with increasing task complexity suggesting that modular decompo"
+    ],
+    "fabricated_quotes": 8,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 789,
+   "state": "done",
+   "seconds": 620.6,
+   "cost": 0.0,
+   "input_tokens": 57934,
+   "output_tokens": 8843,
+   "calls": 22,
+   "repairs": 2,
+   "started_at": 1787878179.1836538,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.522
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 790,
+   "state": "done",
+   "seconds": 625.7,
+   "cost": 0.0,
+   "input_tokens": 56597,
+   "output_tokens": 17151,
+   "calls": 32,
+   "repairs": 0,
+   "started_at": 1787878799.9470193,
+   "outcome": {
+    "claims_extracted": 30,
+    "references_checked": 30,
+    "references_matched": 22,
+    "blocked": true,
+    "claim_keys": [
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "efficient vision driven locomotion is advancing rapidly",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "heterogeneous agent reinforcement learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision language model for quadruped robot locomotion",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the exact quoted text",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the intersection of multi agent reinforcement learning and quadruped locomotion has seen substantive progress beyond lim",
+     "the manager based workflow evaluated in quadrrl which separates command handling observation encoding and reward computa",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 13,
+    "verbatim_rate": 0.567,
+    "malformed_reference_rate": 0.231,
+    "resolution_rate": 0.733
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 791,
+   "state": "done",
+   "seconds": 800.9,
+   "cost": 0.0,
+   "input_tokens": 57934,
+   "output_tokens": 7617,
+   "calls": 22,
+   "repairs": 2,
+   "started_at": 1787879425.8421361,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 12,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.522
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 792,
+   "state": "done",
+   "seconds": 111.3,
+   "cost": 0.0,
+   "input_tokens": 17183,
+   "output_tokens": 2299,
+   "calls": 2,
+   "repairs": 0,
+   "started_at": 1787880226.9389882,
+   "outcome": {
+    "claims_extracted": 6,
+    "references_checked": 6,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "boston dynamics spot employs a hybrid control scheme with delayed pd control for the hip actuators and remotized pd cont",
+     "nvidia isaac lab introduces two distinct workflow architectures for robot control a manager based approach that separate",
+     "the anymal c robot a 50 kg quadruped is equipped with an lstm based actuator network that models the dynamics of its leg",
+     "the heterogeneous agent reinforcement learning harl framework is integrated with isaac lab to enable multi agent experim",
+     "the rsl rl package which implements proximal policy optimization ppo with gpu parallel optimizations is used as the core",
+     "the unitree go2 a lighter 15 kg quadruped utilizes a dc motor model for its actuators it has a lower torque limit of 23 "
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 793,
+   "state": "done",
+   "seconds": 627.6,
+   "cost": 0.0,
+   "input_tokens": 58577,
+   "output_tokens": 20052,
+   "calls": 30,
+   "repairs": 0,
+   "started_at": 1787880338.4015296,
+   "outcome": {
+    "claims_extracted": 74,
+    "references_checked": 74,
+    "references_matched": 21,
+    "blocked": true,
+    "claim_keys": [
+     "a ray caster sensor with 0 1 metre resolution over a 1 6 1 0 metre area provides height scan observations on rough terra",
+     "across all platforms average episode reward fell from 38 47 on flat terrain to 30 64 on rough terrain 20 4 decrease",
+     "actor and critic networks use three hidden layers with elu activation",
+     "anymal d employs the same actuator network configuration as no public d specific network is available",
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "boston dynamics spot uses delayed pd control for hip actuators and remotized pd control for knees with hip torque limit ",
+     "both share identical ppo hyperparameters and reward functions isolating architectural effects",
+     "contact penalties discourage non foot contacts",
+     "convergence rate was computed as final performance initial performance training steps",
+     "conversely the unitree go2 15kg exhibited the poorest performance with significant drops in reward and tracking accuracy",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "domain randomisation includes friction variation 20 mass variation 5 kg centre of mass shifts 0 05 m base position and v",
+     "each robot s individual properties were retained as configured in isaac lab ensuring realistic training dynamics",
+     "energy efficiency penalties penalise joint torque and acceleration",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "fig 1 illustrates the performance comparison between direct and manager based control for anymal c the figure shows mean",
+     "flat terrain provides a baseline for fundamental locomotion ability a plane surface with static and dynamic friction of ",
+     "four robots were selected to represent a spectrum of physical capabilities anymal c 50kg uses an lstm based actuator net",
+     "heterogeneous agent reinforcement learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "isaac lab simulates thousands of robot instances in parallel on a single gpu reducing training time from days to hours",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "linear velocity tracking dropped from 1 53 to 1 37 10 9 angular velocity tracking from 0 53 to 0 47 11 6 and episode len",
+     "locomamba vision language model for robot locomotion analysis",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "manager based control exhibits substantially higher mean reward and longer episode lengths under both terrain conditions",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "nvidia isaac lab version 5 1 was installed on ubuntu 22 04 lts with cuda 12 1 running on a workstation equipped with an ",
+     "on anymal c flat terrain direct control achieved mean reward 26 9 versus manager based 39 3 a 46 3 improvement",
+     "on anymal c rough terrain direct control achieved 17 1 versus manager based 31 8 an 86 5 improvement",
+     "performance was measured using mean episode reward sum of all rewards per episode episode length maximum 1000 steps 20 s",
+     "ppo was implemented via rsl rl with the following hyperparameters steps per environment 24 horizon 0 48s maximum iterati",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "rough terrain is procedurally generated with random patches slopes stair height variation and obstacles at maximum heigh",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "stability penalties discourage vertical velocity excessive roll pitch angular velocity and undesirable orientation",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the 86 5 performance advantage of manager based control over direct control on rough terrain suggests that modular decom",
+     "the clear hierarchy of morphological performance confirms that robot design is a critical factor in rl success with heav",
+     "the convergence plots fig 2 show that while all robots improve with training the rate of convergence varies significantl",
+     "the data reveals a clear hierarchy of morphological performance anymal c 50kg consistently outperformed its lighter coun",
+     "the data suggests that future research should focus on developing adaptive control algorithms that can compensate for th",
+     "the exact quoted text",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the manager based architecture consistently outperformed the direct approach across all morphologies with the largest ga",
+     "the manager based workflow evaluated in quadrrl which separates command handling observation encoding and reward computa",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the platform provides high fidelity physics modelling including contact forces friction and dynamics with pre built asse",
+     "the quantified degradation on rough terrain provides a measurable baseline for future improvements in terrain adaptive c",
+     "the results demonstrate that the manager based architecture is highly effective for quadruped locomotion particularly in",
+     "the results indicate that while the manager based architecture provides a robust framework for control the physical char",
+     "the reward function combines multiple components primary task rewards use exponential tracking for linear and angular ve",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the total reward is a weighted sum with manager based and direct workflows using weights calibrated separately",
+     "these hyperparameters were adopted from 3 to ensure fair cross morphology comparison",
+     "this quantified degradation establishes a concrete baseline for future improvements in terrain adaptive control",
+     "this suggests that larger more massive robots possess inherent stability advantages that facilitate better tracking and ",
+     "two workflow architectures were compared the manager based approach uses isaac lab s modular mdp framework separating co",
+     "understanding domain randomization for sim to real transfer",
+     "unitree go2 15kg uses a dc motor model with torque limit 23 5 n m and velocity limit 30 rad s",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 30,
+    "verbatim_rate": 0.595,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.284
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 794,
+   "state": "done",
+   "seconds": 93.5,
+   "cost": 0.0,
+   "input_tokens": 17121,
+   "output_tokens": 2442,
+   "calls": 2,
+   "repairs": 0,
+   "started_at": 1787880966.1488993,
+   "outcome": {
+    "claims_extracted": 5,
+    "references_checked": 5,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "boston dynamics spot is used as a testbed for multi agent experiments the study integrates the heterogeneous agent reinf",
+     "nvidia isaac lab introduces two distinct workflow architectures for robot control a manager based approach that separate",
+     "the anymal c robot a 50 kg quadruped developed by eth zurich is one of the primary test subjects it features an lstm bas",
+     "the rsl rl package which implements proximal policy optimization ppo with gpu parallel optimizations is used as the core",
+     "the unitree go2 a 15 kg quadruped is also included in the benchmark it utilizes a dc motor model with a torque limit of "
+    ],
+    "fabricated_quotes": 5,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 795,
+   "state": "done",
+   "seconds": 36.3,
+   "cost": 0.0,
+   "input_tokens": 17122,
+   "output_tokens": 1787,
+   "calls": 2,
+   "repairs": 0,
+   "started_at": 1787881059.8238869,
+   "outcome": {
+    "claims_extracted": 5,
+    "references_checked": 5,
+    "references_matched": 0,
+    "blocked": true,
+    "claim_keys": [
+     "despite the architectural differences both workflows share identical hyperparameters for the proximal policy optimizatio",
+     "nvidia isaac lab introduces two distinct workflow architectures for controlling robotic agents a manager based approach ",
+     "the direct workflow is considered a legacy approach that is being phased out in favor of the more flexible and maintaina",
+     "the manager based workflow is built on top of the isaac lab s scene and manager classes which provide a high level inter",
+     "the manager based workflow is characterized by its modularity allowing for easier debugging and the ability to swap out "
+    ],
+    "fabricated_quotes": 5,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 796,
+   "state": "done",
+   "seconds": 585.2,
+   "cost": 0.0,
+   "input_tokens": 53597,
+   "output_tokens": 10456,
+   "calls": 29,
+   "repairs": 0,
+   "started_at": 1787881096.2458255,
+   "outcome": {
+    "claims_extracted": 62,
+    "references_checked": 62,
+    "references_matched": 20,
+    "blocked": true,
+    "claim_keys": [
+     "a ray caster sensor with 0 1 metre resolution over a 1 6 1 0 metre area provides height scan observations on rough terra",
+     "a surprising observation concerned boston dynamics spot in initial single agent experiments spot consistently outperform",
+     "archical manager based con trol substantially outperforms direct monolithic control with the performance gap widening fr",
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "both share identical ppo hyperparameters and reward functions isolating architectural effects",
+     "conversely unitree go2 s slower convergence indicates that learning dynamics depend more on actuator modelling complexit",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "domain randomisation includes friction variation 20 mass variation 5 kg centre of mass shifts 0 05 m base position and v",
+     "each robot s individual properties were retained as configured in isaac lab ensuring realistic training dynamics",
+     "efficient vision driven locomotion is advancing rapidly",
+     "eighth understanding domain randomization for sim to real transfer",
+     "eleventh benchmarking animal level agility with quadruped robots",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "fifth reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "fig 1 illustrates the performance comparison between direct and manager based control for anymal c the figure shows mean",
+     "flat terrain provides a baseline for fundamental locomotion ability a plane surface with static and dynamic friction of ",
+     "four robots were selected to represent a spectrum of physical capabilities anymal c 50kg uses an lstm based actuator net",
+     "fourth isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "isaac lab simulates thousands of robot instances in parallel on a single gpu reducing training time from days to hours",
+     "manager based control consistently outperformed direct control across all scenarios on anymal c flat terrain direct cont",
+     "ninth heterogeneous agent reinforcement learning",
+     "nvidia isaac lab version 5 1 was installed on ubuntu 22 04 lts with cuda 12 1 running on a workstation equipped with an ",
+     "performance was measured using mean episode reward sum of all rewards per episode episode length maximum 1000 steps 20 s",
+     "ppo was implemented via rsl rl with the following hyperparameters steps per environment 24 horizon 0 48s maximum iterati",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "rough terrain adversely affected all robots regardless of architecture across all platforms average episode reward fell ",
+     "rough terrain is procedurally generated with random patches slopes stair height variation and obstacles at maximum heigh",
+     "second terrain difficulty induces a quantifiable 20 degradation in reward and tracking met rics across all platforms est",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "seventh sim to real transfer of robotic control with dynamics randomization",
+     "sixth proximal policy optimization algorithms",
+     "tenth multi agent reinforcement learning for single quadruped robot locomotion",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the anymal c and d variants demonstrated the highest overall performance with mean rewards of 35 55 and 35 50 respective",
+     "the anymal robots demonstrated the highest performance and fastest convergence suggesting that their physical design and",
+     "the convergence plots fig 2 show that the anymal robots reached a stable plateau much faster than the other two platform",
+     "the data suggests that while the anymal platform is robust the go2 and spot platforms require further tuning of their co",
+     "the exact quoted text",
+     "the findings provide a quantitative baseline for comparing quadruped robots and suggest that modular control frameworks ",
+     "the harl isaac lab integration required a custom wrapper to convert isaac lab s step outputs into a format compatible wi",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the intersection of multi agent reinforcement learning and quadruped locomotion has seen substantive progress beyond lim",
+     "the magnitude of manager based improvement was larger than initially expected on rough terrain the modular architecture ",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the platform provides high fidelity physics modelling including contact forces friction and dynamics with pre built asse",
+     "the results indicate that the manager based control architecture is superior for complex tasks and that the anymal morph",
+     "the reward function combines multiple components primary task rewards use exponential tracking for linear and angular ve",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the significant drop in performance across all platforms when transitioning from flat to rough terrain highlights the ne",
+     "the study successfully isolated the effects of workflow architecture terrain difficulty and robot morphology the manager",
+     "these hyperparameters were adopted from 3 to ensure fair cross morphology comparison",
+     "third robot morphology significantly affects both convergence speed and final tracking accuracy anymal robots converge t",
+     "thirteenth whole body constrained learning for legged locomotion via hierarchical optimization",
+     "this quantified degradation establishes a concrete baseline for the impact of environmental complexity on quadruped perf",
+     "twelfth learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "two workflow architectures were compared the manager based approach uses isaac lab s modular mdp framework separating co"
+    ],
+    "fabricated_quotes": 40,
+    "verbatim_rate": 0.355,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.323
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 797,
+   "state": "done",
+   "seconds": 51.8,
+   "cost": 0.0,
+   "input_tokens": 18083,
+   "output_tokens": 1462,
+   "calls": 3,
+   "repairs": 0,
+   "started_at": 1787881681.6130595,
+   "outcome": {
+    "claims_extracted": 1,
+    "references_checked": 1,
+    "references_matched": 1,
+    "blocked": true,
+    "claim_keys": [
+     "the exact quoted text"
+    ],
+    "fabricated_quotes": 1,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 1.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 798,
+   "state": "done",
+   "seconds": 637.7,
+   "cost": 0.0,
+   "input_tokens": 42580,
+   "output_tokens": 10443,
+   "calls": 21,
+   "repairs": 1,
+   "started_at": 1787881733.509696,
+   "outcome": {
+    "claims_extracted": 24,
+    "references_checked": 24,
+    "references_matched": 11,
+    "blocked": true,
+    "claim_keys": [
+     "archical manager based con trol substantially outperforms direct monolithic control with the performance gap widening fr",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "eighth understanding domain randomization for sim to real transfer",
+     "eleventh benchmarking animal level agility with quadruped robots",
+     "fifth reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "first all experiments were conducted in simulation while domain randomisation improves robustness sim to real validation",
+     "fourth isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "fourth the harl integration remains at prototype stage full multi agent sweeps with extensive tuning are needed to empir",
+     "ninth heterogeneous agent reinforcement learning",
+     "second hyperparameters were adopted from literature rather than optimised per morphology although this ensures fair comp",
+     "second terrain difficulty induces a quantifiable 20 degradation in reward and tracking met rics across all platforms est",
+     "seventh sim to real transfer of robotic control with dynamics randomization",
+     "sixth proximal policy optimization algorithms",
+     "tenth multi agent reinforcement learning for single quadruped robot locomotion",
+     "the exact quoted text",
+     "the harl isaac lab integration required a custom wrapper to convert isaac lab s step outputs into a format compatible wi",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the magnitude of manager based improvement was larger than initially expected on rough terrain the modular architecture ",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "third computational constraints limited the number of random seeds per configuration to three larger replication would s",
+     "third robot morphology significantly affects both convergence speed and final tracking accuracy anymal robots converge t",
+     "thirteenth whole body constrained learning for legged locomotion via hierarchical optimization",
+     "twelfth learning robotic policy with imagined transition mitigating the trade off between robustness and optimality"
+    ],
+    "fabricated_quotes": 20,
+    "verbatim_rate": 0.167,
+    "malformed_reference_rate": 0.385,
+    "resolution_rate": 0.458
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 799,
+   "state": "done",
+   "seconds": 60.4,
+   "cost": 0.0,
+   "input_tokens": 18083,
+   "output_tokens": 1606,
+   "calls": 3,
+   "repairs": 0,
+   "started_at": 1787882371.3845851,
+   "outcome": {
+    "claims_extracted": 1,
+    "references_checked": 1,
+    "references_matched": 1,
+    "blocked": true,
+    "claim_keys": [
+     "the exact quoted text"
+    ],
+    "fabricated_quotes": 1,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 1.0
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 800,
+   "state": "done",
+   "seconds": 51.4,
+   "cost": 0.0,
+   "input_tokens": 18083,
+   "output_tokens": 1567,
+   "calls": 3,
+   "repairs": 0,
+   "started_at": 1787882431.904851,
+   "outcome": {
+    "claims_extracted": 1,
+    "references_checked": 1,
+    "references_matched": 1,
+    "blocked": true,
+    "claim_keys": [
+     "the exact quoted text"
+    ],
+    "fabricated_quotes": 1,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 1.0
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 801,
+   "state": "done",
+   "seconds": 378.3,
+   "cost": 0.0,
+   "input_tokens": 54978,
+   "output_tokens": 8602,
+   "calls": 31,
+   "repairs": 0,
+   "started_at": 1787882483.4736779,
+   "outcome": {
+    "claims_extracted": 41,
+    "references_checked": 41,
+    "references_matched": 22,
+    "blocked": true,
+    "claim_keys": [
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "efficient vision driven locomotion is advancing rapidly",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "first all experiments were conducted in simulation while domain randomisation improves robustness sim to real validation",
+     "fourth the benchmark will be extended to additional morphologies wheeled legged hybrids hexapods and tasks obstacle avoi",
+     "fourth the harl integration remains at prototype stage full multi agent sweeps with extensive tuning are needed to empir",
+     "future work follows a hierarchical pipeline first systematic marl experiments on spot will compare decentralised limb le",
+     "heterogeneous agent reinforcement learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision language model for quadruped robot locomotion",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "second hyperparameters were adopted from literature rather than optimised per morphology although this ensures fair comp",
+     "second sim to sim validation will export policies to alternative physics engines e g mujoco to identify simulator specif",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the exact quoted text",
+     "the harl isaac lab integration required a custom wrapper to convert isaac lab s step outputs into a format compatible wi",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the intersection of multi agent reinforcement learning and quadruped locomotion has seen substantive progress beyond lim",
+     "the magnitude of manager based improvement was larger than initially expected on rough terrain the modular architecture ",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the technical foundation laid here is timely recent advances in cooperative quadruped tasks from collision avoidant coll",
+     "third computational constraints limited the number of random seeds per configuration to three larger replication would s",
+     "third sim to real experiments on physical platforms will quantify the real world sim to real gap and inform improved dom",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 21,
+    "verbatim_rate": 0.488,
+    "malformed_reference_rate": 0.268,
+    "resolution_rate": 0.537
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "4"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 802,
+   "state": "done",
+   "seconds": 774.4,
+   "cost": 0.0,
+   "input_tokens": 56738,
+   "output_tokens": 19570,
+   "calls": 33,
+   "repairs": 0,
+   "started_at": 1787882861.8956084,
+   "outcome": {
+    "claims_extracted": 35,
+    "references_checked": 35,
+    "references_matched": 22,
+    "blocked": true,
+    "claim_keys": [
+     "archical manager based con trol substantially outperforms direct monolithic control with the performance gap widening fr",
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "eighth understanding domain randomization for sim to real transfer",
+     "eleventh benchmarking animal level agility with quadruped robots",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "fifth reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "first all experiments were conducted in simulation while domain randomisation improves robustness sim to real validation",
+     "fourth isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "fourth the harl integration remains at prototype stage full multi agent sweeps with extensive tuning are needed to empir",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "ninth heterogeneous agent reinforcement learning",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "second hyperparameters were adopted from literature rather than optimised per morphology although this ensures fair comp",
+     "second terrain difficulty induces a quantifiable 20 degradation in reward and tracking met rics across all platforms est",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "seventh sim to real transfer of robotic control with dynamics randomization",
+     "sixth proximal policy optimization algorithms",
+     "tenth multi agent reinforcement learning for single quadruped robot locomotion",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the 86 5 performance advantage of manager based control over direct control on rough terrain suggests that modular decom",
+     "the exact quoted text",
+     "the harl isaac lab integration required a custom wrapper to convert isaac lab s step outputs into a format compatible wi",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the magnitude of manager based improvement was larger than initially expected on rough terrain the modular architecture ",
+     "the manager based workflow evaluated in quadrrl which separates command handling observation encoding and reward computa",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "third computational constraints limited the number of random seeds per configuration to three larger replication would s",
+     "third robot morphology significantly affects both convergence speed and final tracking accuracy anymal robots converge t",
+     "thirteenth whole body constrained learning for legged locomotion via hierarchical optimization",
+     "twelfth learning robotic policy with imagined transition mitigating the trade off between robustness and optimality"
+    ],
+    "fabricated_quotes": 28,
+    "verbatim_rate": 0.2,
+    "malformed_reference_rate": 0.286,
+    "resolution_rate": 0.629
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 803,
+   "state": "done",
+   "seconds": 369.0,
+   "cost": 0.0,
+   "input_tokens": 42003,
+   "output_tokens": 4872,
+   "calls": 17,
+   "repairs": 1,
+   "started_at": 1787883636.4755232,
+   "outcome": {
+    "claims_extracted": 31,
+    "references_checked": 31,
+    "references_matched": 10,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robot morphology significantly influenced both final performance and convergence",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the exact quoted text",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 7,
+    "verbatim_rate": 0.774,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.323
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 804,
+   "state": "done",
+   "seconds": 239.5,
+   "cost": 0.0,
+   "input_tokens": 42003,
+   "output_tokens": 4597,
+   "calls": 17,
+   "repairs": 1,
+   "started_at": 1787884005.59309,
+   "outcome": {
+    "claims_extracted": 31,
+    "references_checked": 31,
+    "references_matched": 10,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently achieves higher tracking accuracy than direct control",
+     "manager based control consistently outperformed direct control across all scenarios",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robot morphology significantly influenced both final performance and convergence",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "the anymal robots advantage likely stems from their lstm based actuator networks capturing temporal dynamics whereas go2",
+     "the consistency of this degradation across morphologies suggests that terrain complexity rather than robot specific weak",
+     "the exact quoted text",
+     "the modular architecture likely benefits from specialisation the command manager handles navigation independently the ob",
+     "the performance gap widens with task complexity suggesting that modular decomposition becomes increasingly beneficial as",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 7,
+    "verbatim_rate": 0.774,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.323
+   }
+  },
+  {
+   "cell": {
+    "window": "6000",
+    "workers": "1"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 805,
+   "state": "done",
+   "seconds": 882.6,
+   "cost": 0.0,
+   "input_tokens": 64698,
+   "output_tokens": 9708,
+   "calls": 39,
+   "repairs": 0,
+   "started_at": 1787884245.2083814,
+   "outcome": {
+    "claims_extracted": 46,
+    "references_checked": 46,
+    "references_matched": 29,
+    "blocked": true,
+    "claim_keys": [
+     "anymal c 50kg uses an lstm based actuator network with torque limits of 80 n m saturating at 120 n m and velocity limit ",
+     "anymal c and anymal d achieve superior tracking performance compared to unitree go2 particularly in linear velocity trac",
+     "archical manager based con trol substantially outperforms direct monolithic control with the performance gap widening fr",
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "boston dynamics spot uses delayed pd control for hip actuators and remotized pd control for knees with hip torque limit ",
+     "cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capabilities with one robot achiev",
+     "efficient vision driven locomotion is advancing rapidly",
+     "eighth understanding domain randomization for sim to real transfer",
+     "eleventh benchmarking animal level agility with quadruped robots",
+     "every robot platform experiences substantial performance degradation on rough terrain with reductions ranging from 18 2 ",
+     "evolutionary reinforcement learning has emerged as a complementary paradigm to address the overfitting that plagues stan",
+     "evolutionary variants retain much of their capability with cem td3 achieving 19574 33 under transfer",
+     "existing paradigms rely on extensive domain randomisation to bridge the sim to real gap training policies across wide pa",
+     "fifth reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "fig 1 illustrates the performance comparison between direct and manager based control for anymal c the figure shows mean",
+     "fourth isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "hierarchical optimisation based frameworks that incorporate both hard and soft constraints into rl enabling policy fine ",
+     "however optimal performance under ideal conditions often conflicts with worst case robustness forcing policies to make t",
+     "manager based control consistently achieves higher tracking accuracy than direct control with the difference being more ",
+     "ninth heterogeneous agent reinforcement learning",
+     "nvidia isaac lab version 5 1 was installed on ubuntu 22 04 lts with cuda 12 1 running on a workstation equipped with an ",
+     "ppo was implemented via rsl rl with the following hyperparameters steps per environment 24 horizon 0 48s maximum iterati",
+     "recent work on imagined transitions where policies learn from an optimal policy and dynamics model operating in an ideal",
+     "robot morphology significantly influenced both final performance and convergence",
+     "rough terrain adversely affected all robots regardless of architecture",
+     "rough terrain adversely affected all robots regardless of architecture across all platforms average episode reward fell ",
+     "second terrain difficulty induces a quantifiable 20 degradation in reward and tracking met rics across all platforms est",
+     "selective state space models mamba can achieve near linear time and memory scaling for cross modal fusion outperforming ",
+     "seventh sim to real transfer of robotic control with dynamics randomization",
+     "sixth proximal policy optimization algorithms",
+     "table i presents the final performance metrics manager based control consistently outperformed direct control across all",
+     "tenth multi agent reinforcement learning for single quadruped robot locomotion",
+     "the 20 4 performance degradation observed when moving from flat to rough terrain may not be an immutable physical constr",
+     "the exact quoted text",
+     "the findings of this study must be interpreted in the context of several parallel advances reshaping quadruped locomotio",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the intersection of multi agent reinforcement learning and quadruped locomotion has seen substantive progress beyond lim",
+     "the reduction occurs because robots must simultaneously process height scan data adjust gait patterns to avoid obstacles",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "the slower convergence of go2 despite simpler mechanics may reflect higher volatility in its dc motor model requiring mo",
+     "third robot morphology significantly affects both convergence speed and final tracking accuracy anymal robots converge t",
+     "thirteenth whole body constrained learning for legged locomotion via hierarchical optimization",
+     "training time varied across methods for flat terrain anymal c converged in approximately 1200 seconds using manager base",
+     "twelfth learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "unitree go2 15kg uses a dc motor model with torque limit 23 5 n m and velocity limit 30 rad s"
+    ],
+    "fabricated_quotes": 29,
+    "verbatim_rate": 0.37,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.63
+   }
+  },
+  {
+   "cell": {
+    "window": "28000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 806,
+   "state": "done",
+   "seconds": 22.3,
+   "cost": 0.0,
+   "input_tokens": 18083,
+   "output_tokens": 1216,
+   "calls": 3,
+   "repairs": 0,
+   "started_at": 1787885127.9630075,
+   "outcome": {
+    "claims_extracted": 1,
+    "references_checked": 1,
+    "references_matched": 1,
+    "blocked": true,
+    "claim_keys": [
+     "the exact quoted text"
+    ],
+    "fabricated_quotes": 1,
+    "verbatim_rate": 0.0,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 1.0
+   }
+  },
+  {
+   "cell": {
+    "window": "14000",
+    "workers": "2"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 807,
+   "state": "done",
+   "seconds": 118.6,
+   "cost": 0.0,
+   "input_tokens": 41067,
+   "output_tokens": 5808,
+   "calls": 19,
+   "repairs": 0,
+   "started_at": 1787885150.3987744,
+   "outcome": {
+    "claims_extracted": 28,
+    "references_checked": 28,
+    "references_matched": 14,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently outperformed direct control across all scenarios on anymal c flat terrain direct cont",
+     "manager based control exhibits substantially higher mean reward and longer episode lengths under both terrain conditions",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "on manager based flat terrain anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 for lin",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture across all platforms average episode reward fell ",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "the exact quoted text",
+     "the figure clearly demonstrates that every robot experiences a substantial performance reduction when transitioning from",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "understanding domain randomization for sim to real transfer",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 8,
+    "verbatim_rate": 0.714,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.5
+   }
+  }
+ ]
+}

@@ -1,0 +1,663 @@
+{
+ "spec": {
+  "key": "role_sizing",
+  "title": "Does a smaller model for per-item work cost anything?",
+  "agent": "litreview",
+  "inputs": [
+   {
+    "document_id": 1,
+    "max_claims": 80,
+    "max_workers": 2
+   }
+  ],
+  "factors": [
+   {
+    "name": "mid_model",
+    "setting": "model:nvidia:mid",
+    "levels": [
+     "nvidia/llama-3.1-nemoguard-8b-content-safety",
+     "nvidia/ising-calibration-1.5-31b",
+     "nvidia/nemotron-3-ultra-550b-a55b"
+    ],
+    "payload_key": ""
+   }
+  ],
+  "repeats": 3,
+  "notes": "The `mid` role does the per-item work and therefore most of the calls. The question is whether the smaller model extracts materially fewer claims for materially less time and money.",
+  "order": "random",
+  "seed": 12345,
+  "baseline": "mid_model=meta/llama-3.3-70b-instruct"
+ },
+ "when": "2026-08-31 11:22",
+ "n_runs": 9,
+ "pool_size": 51,
+ "drift": null,
+ "baseline": "mid_model=meta/llama-3.3-70b-instruct",
+ "cells": [
+  {
+   "cell": {
+    "mid_model": "nvidia/nemotron-3-ultra-550b-a55b"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 306.5,
+    "median": 328.9,
+    "sd": 74.761,
+    "min": 223.1,
+    "max": 367.5,
+    "ci95": [
+     223.1,
+     367.5
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 12345.333,
+    "median": 12488,
+    "sd": 658.691,
+    "min": 11627,
+    "max": 12921,
+    "ci95": [
+     11627.0,
+     12921.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 15.667,
+    "median": 16,
+    "sd": 0.577,
+    "min": 15,
+    "max": 16,
+    "ci95": [
+     15.0,
+     16.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 17.333,
+    "median": 17,
+    "sd": 0.577,
+    "min": 17,
+    "max": 18,
+    "ci95": [
+     17.0,
+     18.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 11,
+    "median": 11,
+    "sd": 0.0,
+    "min": 11,
+    "max": 11,
+    "ci95": [
+     11.0,
+     11.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.404,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.635,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.34,
+    "corroborated_rate": 0.905,
+    "stability": 0.796
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/ising-calibration-1.5-31b"
+   },
+   "runs": 3,
+   "failures": 0,
+   "seconds": {
+    "n": 3,
+    "mean": 491.767,
+    "median": 608.8,
+    "sd": 253.402,
+    "min": 201.0,
+    "max": 665.5,
+    "ci95": [
+     201.0,
+     665.5
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 7474.667,
+    "median": 7986,
+    "sd": 1686.187,
+    "min": 5592,
+    "max": 8846,
+    "ci95": [
+     5592.0,
+     8846.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 18.333,
+    "median": 19,
+    "sd": 2.082,
+    "min": 16,
+    "max": 20,
+    "ci95": [
+     16.0,
+     20.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 1.333,
+    "median": 2,
+    "sd": 1.155,
+    "min": 0,
+    "max": 2,
+    "ci95": [
+     0.0,
+     2.0
+    ]
+   },
+   "claims_extracted": {
+    "n": 3,
+    "mean": 25.333,
+    "median": 23,
+    "sd": 4.041,
+    "min": 23,
+    "max": 30,
+    "ci95": [
+     23.0,
+     30.0
+    ]
+   },
+   "references_matched": {
+    "n": 3,
+    "mean": 10,
+    "median": 10,
+    "sd": 1.0,
+    "min": 9,
+    "max": 11,
+    "ci95": [
+     9.0,
+     11.0
+    ]
+   },
+   "quality": {
+    "runs": 3,
+    "verbatim_rate": 0.726,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.398,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.497,
+    "corroborated_rate": 0.922,
+    "stability": 0.845
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/llama-3.1-nemoguard-8b-content-safety"
+   },
+   "runs": 3,
+   "failures": 3,
+   "seconds": {
+    "n": 3,
+    "mean": 19.267,
+    "median": 18.9,
+    "sd": 3.365,
+    "min": 16.1,
+    "max": 22.8,
+    "ci95": [
+     16.1,
+     22.8
+    ]
+   },
+   "cost": {
+    "n": 3,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 3,
+    "mean": 152,
+    "median": 152,
+    "sd": 0.0,
+    "min": 152,
+    "max": 152,
+    "ci95": [
+     152.0,
+     152.0
+    ]
+   },
+   "calls": {
+    "n": 3,
+    "mean": 12,
+    "median": 12,
+    "sd": 0.0,
+    "min": 12,
+    "max": 12,
+    "ci95": [
+     12.0,
+     12.0
+    ]
+   },
+   "repairs": {
+    "n": 3,
+    "mean": 6,
+    "median": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6,
+    "ci95": [
+     6.0,
+     6.0
+    ]
+   },
+   "quality": {
+    "runs": 0
+   }
+  }
+ ],
+ "records": [
+  {
+   "cell": {
+    "mid_model": "nvidia/nemotron-3-ultra-550b-a55b"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1003,
+   "state": "done",
+   "seconds": 328.9,
+   "cost": 0.0,
+   "input_tokens": 35749,
+   "output_tokens": 12488,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788169318.5373333,
+   "outcome": {
+    "claims_extracted": 18,
+    "references_checked": 18,
+    "references_matched": 11,
+    "blocked": true,
+    "claim_keys": [
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "deep reinforcement learning drl offers an alternative robots learn robust policies through trial and error interaction i",
+     "direct cross morphology comparisons of industry standard robots trained under identical conditions are rare",
+     "domain randomisation addresses the sim to real gap by varying physical parameters such as friction mass and terrain feat",
+     "drl particularly proximal policy optimisation ppo has proven highly effective for learning locomotion controllers",
+     "existing paradigms rely on extensive domain randomisation to bridge the sim to real gap training policies across wide pa",
+     "multi agent loco manipulation for long horizon pushing tasks has similarly benefited from hierarchical marl frameworks a",
+     "nvidia isaac lab introduces two paradigms a manager based workflow emphasising modular flexibility and a direct workflow",
+     "other studies have addressed collaborative carrying with coupled quadrupeds eliminating the need for precomputed traject",
+     "precise estimation of physical parameters through sampling based methods with active exploration can reduce the sim to r",
+     "quadruped robots such as anymal unitree go2 and boston dynamics spot have demonstrated increasing capability yet fulfill",
+     "recent evaluations demonstrate that while td3 achieves mean rewards of 5927 26 on flat terrain its performance drops sha",
+     "recent work has demonstrated cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capab",
+     "recent work has demonstrated that selective state space models mamba can achieve near linear time and memory scaling for",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "these hyperparameters were adopted from 3 to ensure fair cross morphology comparison",
+     "unconstrained rl policies deployed in the real world remain susceptible to joint collisions excessive torque and foot sl"
+    ],
+    "fabricated_quotes": 11,
+    "verbatim_rate": 0.389,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.611
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/ising-calibration-1.5-31b"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1004,
+   "state": "done",
+   "seconds": 608.8,
+   "cost": 0.0,
+   "input_tokens": 55473,
+   "output_tokens": 7986,
+   "calls": 20,
+   "repairs": 2,
+   "started_at": 1788169647.6490877,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 10,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.435
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/ising-calibration-1.5-31b"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1005,
+   "state": "done",
+   "seconds": 201.0,
+   "cost": 0.0,
+   "input_tokens": 37485,
+   "output_tokens": 5592,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788170256.6240883,
+   "outcome": {
+    "claims_extracted": 30,
+    "references_checked": 30,
+    "references_matched": 11,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "manager based control consistently outperformed direct control across all scenarios on anymal c flat terrain direct cont",
+     "manager based control exhibits substantially higher mean reward and longer episode lengths under both terrain conditions",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "on manager based flat terrain anymal d achieved mean reward 39 35 anymal c 39 31 0 1 lower and unitree go2 36 74 for lin",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "rough terrain adversely affected all robots regardless of architecture across all platforms average episode reward fell ",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the figure clearly demonstrates that every robot experiences a substantial performance reduction when transitioning from",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "the results reveal a clear hierarchy anymal c and anymal d achieve superior tracking performance compared to unitree go2",
+     "understanding domain randomization for sim to real transfer",
+     "unitree go2 required 452 iterations to reach 75 of final performance on flat terrain whereas anymal d required 111 itera",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 9,
+    "verbatim_rate": 0.7,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.367
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/llama-3.1-nemoguard-8b-content-safety"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1006,
+   "state": "failed",
+   "seconds": 22.8,
+   "cost": 0.0,
+   "input_tokens": 52110,
+   "output_tokens": 152,
+   "calls": 12,
+   "repairs": 6,
+   "started_at": 1788170457.7937157,
+   "outcome": {}
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/ising-calibration-1.5-31b"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1007,
+   "state": "done",
+   "seconds": 665.5,
+   "cost": 0.0,
+   "input_tokens": 54229,
+   "output_tokens": 8846,
+   "calls": 19,
+   "repairs": 2,
+   "started_at": 1788170480.7659285,
+   "outcome": {
+    "claims_extracted": 23,
+    "references_checked": 23,
+    "references_matched": 9,
+    "blocked": true,
+    "claim_keys": [
+     "ame 2 agile and generalized legged locomotion via attention based neural map encoding",
+     "barkour benchmarking animal level agility with quadruped robots",
+     "co jump cooperative jumping with quadrupedal robots via multi agent reinforcement learning",
+     "heterogeneous agent reinforcement learning",
+     "isaac lab a gpu accelerated simulation framework for multi modal robot learning",
+     "learning agile and dynamic motor skills for legged robots",
+     "learning multi agent local collision avoidance for collaborative carrying tasks with coupled quadrupedal robots",
+     "learning multi agent loco manipulation for long horizon quadrupedal pushing",
+     "learning robotic policy with imagined transition mitigating the trade off between robustness and optimality",
+     "learning to walk in minutes using massively parallel deep reinforcement learning",
+     "locomamba vision driven locomotion via end to end deep reinforcement learning with mamba",
+     "masq multi agent reinforcement learning for single quadruped robot locomotion",
+     "proximal policy optimization algorithms",
+     "quadruped robot locomotion based on deep learning rules",
+     "reinforcement learning for quadrupedal locomotion current advancements and future perspectives",
+     "robust quadruped locomotion via evolutionary reinforcement learning",
+     "sampling based system identification with active exploration for legged sim2real learning",
+     "sim to real transfer of robotic control with dynamics randomization",
+     "terrain difficulty induces a quantifiable 20 degradation in reward and tracking metrics across all platforms establishin",
+     "the magnitude of manager based improvement was larger than initially expected",
+     "the near identical performance of anymal c and d despite mechanical differences suggests that within this benchmark cont",
+     "understanding domain randomization for sim to real transfer",
+     "whole body constrained learning for legged locomotion via hierarchical optimization"
+    ],
+    "fabricated_quotes": 6,
+    "verbatim_rate": 0.739,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.391
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/llama-3.1-nemoguard-8b-content-safety"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1008,
+   "state": "failed",
+   "seconds": 18.9,
+   "cost": 0.0,
+   "input_tokens": 52110,
+   "output_tokens": 152,
+   "calls": 12,
+   "repairs": 6,
+   "started_at": 1788171146.4484024,
+   "outcome": {}
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/nemotron-3-ultra-550b-a55b"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1009,
+   "state": "done",
+   "seconds": 223.1,
+   "cost": 0.0,
+   "input_tokens": 35785,
+   "output_tokens": 11627,
+   "calls": 15,
+   "repairs": 0,
+   "started_at": 1788171165.5333354,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 11,
+    "blocked": true,
+    "claim_keys": [
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "deep reinforcement learning drl offers an alternative robots learn robust policies through trial and error interaction i",
+     "domain randomisation addresses the sim to real gap by varying physical parameters such as friction mass and terrain feat",
+     "drl particularly proximal policy optimisation ppo has proven highly effective for learning locomotion controllers 3 6",
+     "existing paradigms rely on extensive domain randomisation to bridge the sim to real gap training policies across wide pa",
+     "multi agent loco manipulation for long horizon pushing tasks has similarly benefited from hierarchical marl frameworks a",
+     "nvidia isaac lab introduces two paradigms a manager based workflow emphasising modular flexibility and a direct workflow",
+     "other studies have addressed collaborative carrying with coupled quadrupeds eliminating the need for precomputed traject",
+     "precise estimation of physical parameters through sampling based methods with active exploration can reduce the sim to r",
+     "quadruped robots such as anymal unitree go2 and boston dynamics spot have demonstrated increasing capability yet fulfill",
+     "recent evaluations demonstrate that while td3 achieves mean rewards of 5927 26 on flat terrain its performance drops sha",
+     "recent work has demonstrated cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capab",
+     "recent work has demonstrated that selective state space models mamba can achieve near linear time and memory scaling for",
+     "second direct cross morphology comparisons of industry standard robots trained under identical conditions are rare 5",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "unconstrained rl policies deployed in the real world remain susceptible to joint collisions excessive torque and foot sl"
+    ],
+    "fabricated_quotes": 10,
+    "verbatim_rate": 0.412,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.647
+   }
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/llama-3.1-nemoguard-8b-content-safety"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1010,
+   "state": "failed",
+   "seconds": 16.1,
+   "cost": 0.0,
+   "input_tokens": 52110,
+   "output_tokens": 152,
+   "calls": 12,
+   "repairs": 6,
+   "started_at": 1788171388.8445442,
+   "outcome": {}
+  },
+  {
+   "cell": {
+    "mid_model": "nvidia/nemotron-3-ultra-550b-a55b"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1011,
+   "state": "done",
+   "seconds": 367.5,
+   "cost": 0.0,
+   "input_tokens": 35707,
+   "output_tokens": 12921,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788171405.0702937,
+   "outcome": {
+    "claims_extracted": 17,
+    "references_checked": 17,
+    "references_matched": 11,
+    "blocked": true,
+    "claim_keys": [
+     "attention based neural map encoders ame 2 have shown that explicitly modelling per cell uncertainty in elevation maps en",
+     "benchmarking efforts such as barkour 11 have proposed standardised criteria for agile locomotion yet cross morphology co",
+     "deep reinforcement learning drl offers an alternative robots learn robust policies through trial and error interaction i",
+     "domain randomisation addresses the sim to real gap by varying physical parameters such as friction mass and terrain feat",
+     "existing paradigms rely on extensive domain randomisation to bridge the sim to real gap training policies across wide pa",
+     "multi agent loco manipulation for long horizon pushing tasks has similarly benefited from hierarchical marl frameworks a",
+     "nvidia isaac lab introduces two paradigms a manager based workflow emphasising modular flexibility and a direct workflow",
+     "other studies have addressed collaborative carrying with coupled quadrupeds eliminating the need for precomputed traject",
+     "precise estimation of physical parameters through sampling based methods with active exploration can reduce the sim to r",
+     "quadruped robots such as anymal unitree go2 and boston dynamics spot have demonstrated increasing capability yet fulfill",
+     "recent evaluations demonstrate that while td3 achieves mean rewards of 5927 26 on flat terrain its performance drops sha",
+     "recent work has demonstrated cooperative jumping where two quadrupeds synchronise to execute jumps far beyond solo capab",
+     "recent work has demonstrated that selective state space models mamba can achieve near linear time and memory scaling for",
+     "second direct cross morphology comparisons of industry standard robots trained under identical conditions are rare 5",
+     "the heterogeneous agent reinforcement learning harl framework including algorithms such as happo and mappo mitigates non",
+     "the rsl rl package used in this work implements ppo with optimisations for gpu parallel environments",
+     "unconstrained rl policies deployed in the real world remain susceptible to joint collisions excessive torque and foot sl"
+    ],
+    "fabricated_quotes": 10,
+    "verbatim_rate": 0.412,
+    "malformed_reference_rate": 0.0,
+    "resolution_rate": 0.647
+   }
+  }
+ ]
+}

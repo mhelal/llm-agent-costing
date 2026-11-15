@@ -1,0 +1,783 @@
+{
+ "spec": {
+  "key": "protocol",
+  "title": "What does the coordination protocol cost, and does it change the answer?",
+  "agent": "marking",
+  "inputs": [
+   {
+    "document_id": 2,
+    "rubric_id": 1,
+    "stage": "final"
+   }
+  ],
+  "factors": [
+   {
+    "name": "critic_rounds",
+    "setting": "",
+    "levels": [
+     "1",
+     "2",
+     "3"
+    ],
+    "payload_key": "max_critic_rounds"
+   }
+  ],
+  "repeats": 5,
+  "notes": "The comparison that matters for a multi-agent system: the same task under more and less coordination, measuring calls, tokens, wall clock AND whether the mark moves. One round is assess-only \u2014 the challenger runs once and its verdict is not acted on; two and three allow revision. A protocol that doubles the cost and returns the same mark is theatre; one that changes the mark must justify the change against a human second marker, not against the cheaper protocol.",
+  "order": "random",
+  "seed": 12345,
+  "baseline": "critic_rounds=2"
+ },
+ "when": "2026-08-31 15:10",
+ "n_runs": 15,
+ "pool_size": 17,
+ "drift": null,
+ "baseline": "critic_rounds=2",
+ "cells": [
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "runs": 5,
+   "failures": 0,
+   "seconds": {
+    "n": 5,
+    "mean": 140.7,
+    "median": 119.3,
+    "sd": 58.19,
+    "min": 72.6,
+    "max": 215.0,
+    "ci95": [
+     97.22,
+     186.52
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 4721.6,
+    "median": 4740,
+    "sd": 190.508,
+    "min": 4416,
+    "max": 4899,
+    "ci95": [
+     4560.2,
+     4850.0
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 14.2,
+    "median": 13,
+    "sd": 1.643,
+    "min": 13,
+    "max": 16,
+    "ci95": [
+     13.0,
+     15.4
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "criteria_marked": {
+    "n": 5,
+    "mean": 6,
+    "median": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6,
+    "ci95": [
+     6.0,
+     6.0
+    ]
+   },
+   "flagged_for_human": {
+    "n": 5,
+    "mean": 0.4,
+    "median": 0,
+    "sd": 0.548,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.0,
+     0.8
+    ]
+   },
+   "quality": {
+    "runs": 5,
+    "verbatim_rate": null,
+    "malformed_reference_rate": null,
+    "resolution_rate": null,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.353,
+    "corroborated_rate": 0.967,
+    "stability": 0.537
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "runs": 5,
+   "failures": 0,
+   "seconds": {
+    "n": 5,
+    "mean": 179.86,
+    "median": 147.9,
+    "sd": 92.043,
+    "min": 92.9,
+    "max": 301.7,
+    "ci95": [
+     109.18,
+     250.54
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 4847,
+    "median": 4708,
+    "sd": 735.878,
+    "min": 3951,
+    "max": 5806,
+    "ci95": [
+     4253.8,
+     5436.4
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 14.8,
+    "median": 15,
+    "sd": 1.789,
+    "min": 13,
+    "max": 17,
+    "ci95": [
+     13.4,
+     16.2
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "criteria_marked": {
+    "n": 5,
+    "mean": 6,
+    "median": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6,
+    "ci95": [
+     6.0,
+     6.0
+    ]
+   },
+   "flagged_for_human": {
+    "n": 5,
+    "mean": 0.6,
+    "median": 1,
+    "sd": 0.548,
+    "min": 0,
+    "max": 1,
+    "ci95": [
+     0.2,
+     1.0
+    ]
+   },
+   "quality": {
+    "runs": 5,
+    "verbatim_rate": null,
+    "malformed_reference_rate": null,
+    "resolution_rate": null,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.353,
+    "corroborated_rate": 0.967,
+    "stability": 0.552
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "runs": 5,
+   "failures": 0,
+   "seconds": {
+    "n": 5,
+    "mean": 189.44,
+    "median": 178.6,
+    "sd": 37.481,
+    "min": 146.3,
+    "max": 237.3,
+    "ci95": [
+     160.92,
+     217.96
+    ]
+   },
+   "cost": {
+    "n": 5,
+    "mean": 0.0,
+    "median": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "output_tokens": {
+    "n": 5,
+    "mean": 4799,
+    "median": 4813,
+    "sd": 584.782,
+    "min": 3921,
+    "max": 5561,
+    "ci95": [
+     4300.0,
+     5261.8
+    ]
+   },
+   "calls": {
+    "n": 5,
+    "mean": 16,
+    "median": 16,
+    "sd": 1.871,
+    "min": 13,
+    "max": 18,
+    "ci95": [
+     14.4,
+     17.2
+    ]
+   },
+   "repairs": {
+    "n": 5,
+    "mean": 0.8,
+    "median": 0,
+    "sd": 1.789,
+    "min": 0,
+    "max": 4,
+    "ci95": [
+     0.0,
+     2.4
+    ]
+   },
+   "criteria_marked": {
+    "n": 5,
+    "mean": 5.8,
+    "median": 6,
+    "sd": 0.447,
+    "min": 5,
+    "max": 6,
+    "ci95": [
+     5.4,
+     6.0
+    ]
+   },
+   "flagged_for_human": {
+    "n": 5,
+    "mean": 0,
+    "median": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "quality": {
+    "runs": 5,
+    "verbatim_rate": null,
+    "malformed_reference_rate": null,
+    "resolution_rate": null,
+    "mae_vs_human": null,
+    "qwk_vs_human": null,
+    "within_10_of_human": null,
+    "pooled_recall": 0.341,
+    "corroborated_rate": 0.827,
+    "stability": 0.374
+   }
+  }
+ ],
+ "records": [
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1012,
+   "state": "done",
+   "seconds": 72.6,
+   "cost": 0.0,
+   "input_tokens": 110502,
+   "output_tokens": 4416,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788182897.9680612,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 94.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 1013,
+   "state": "done",
+   "seconds": 250.7,
+   "cost": 0.0,
+   "input_tokens": 121010,
+   "output_tokens": 4708,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788182970.7725546,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 94.5,
+    "flagged_for_human": 1,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1014,
+   "state": "done",
+   "seconds": 147.9,
+   "cost": 0.0,
+   "input_tokens": 127255,
+   "output_tokens": 5344,
+   "calls": 15,
+   "repairs": 0,
+   "started_at": 1788183221.6293721,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 87.5,
+    "flagged_for_human": 1,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Weak (40-49): absent",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 1015,
+   "state": "done",
+   "seconds": 92.9,
+   "cost": 0.0,
+   "input_tokens": 110288,
+   "output_tokens": 3951,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788183369.7028,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 88.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Absent (0)",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1016,
+   "state": "done",
+   "seconds": 185.8,
+   "cost": 0.0,
+   "input_tokens": 110723,
+   "output_tokens": 4899,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788183462.8378367,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 96.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "unit": 0,
+   "replicate": 2,
+   "job_id": 1017,
+   "state": "done",
+   "seconds": 218.3,
+   "cost": 0.0,
+   "input_tokens": 140075,
+   "output_tokens": 5561,
+   "calls": 18,
+   "repairs": 4,
+   "started_at": 1788183648.8089292,
+   "outcome": {
+    "criteria_marked": 5,
+    "provisional_total": 68.5,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "method=Satisfactory (50-59)",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1018,
+   "state": "done",
+   "seconds": 166.7,
+   "cost": 0.0,
+   "input_tokens": 121176,
+   "output_tokens": 4776,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788183867.2563524,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 74.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Weak (40-49): thin, dated or irrelevant",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Good (60-69)"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 1019,
+   "state": "done",
+   "seconds": 119.3,
+   "cost": 0.0,
+   "input_tokens": 110474,
+   "output_tokens": 4693,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788184034.113892,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 86.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Satisfactory (50-59): workable but weakly justified",
+     "reflection=Weak (40-49): absent",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Good (60-69)"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 1020,
+   "state": "done",
+   "seconds": 110.8,
+   "cost": 0.0,
+   "input_tokens": 120613,
+   "output_tokens": 4740,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788184153.5532231,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 91.0,
+    "flagged_for_human": 1,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "unit": 0,
+   "replicate": 3,
+   "job_id": 1021,
+   "state": "done",
+   "seconds": 146.3,
+   "cost": 0.0,
+   "input_tokens": 110181,
+   "output_tokens": 4813,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788184264.4867582,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 98.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Excellent (70+): critical, current, synthesises, gap is argued",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1022,
+   "state": "done",
+   "seconds": 106.1,
+   "cost": 0.0,
+   "input_tokens": 110945,
+   "output_tokens": 4426,
+   "calls": 13,
+   "repairs": 0,
+   "started_at": 1788184410.980743,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 92.5,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "unit": 0,
+   "replicate": 4,
+   "job_id": 1023,
+   "state": "done",
+   "seconds": 178.6,
+   "cost": 0.0,
+   "input_tokens": 105621,
+   "output_tokens": 3921,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788184517.2166436,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 92.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Good (60-69)",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "1"
+   },
+   "unit": 0,
+   "replicate": 0,
+   "job_id": 1024,
+   "state": "done",
+   "seconds": 237.3,
+   "cost": 0.0,
+   "input_tokens": 114336,
+   "output_tokens": 4924,
+   "calls": 17,
+   "repairs": 0,
+   "started_at": 1788184695.9913123,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 90.0,
+    "flagged_for_human": 0,
+    "claim_keys": [
+     "intro=Good (60-69)",
+     "litreview=Satisfactory (50-59)",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Weak (40-49): absent",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "3"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1025,
+   "state": "done",
+   "seconds": 215.0,
+   "cost": 0.0,
+   "input_tokens": 121007,
+   "output_tokens": 4860,
+   "calls": 16,
+   "repairs": 0,
+   "started_at": 1788184933.495217,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 92.0,
+    "flagged_for_human": 1,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Excellent (70+): insightful and specific",
+     "results=Excellent (70+): rigorous evaluation, limits acknowledged",
+     "writing=Good (60-69)"
+    ]
+   }
+  },
+  {
+   "cell": {
+    "critic_rounds": "2"
+   },
+   "unit": 0,
+   "replicate": 1,
+   "job_id": 1026,
+   "state": "done",
+   "seconds": 301.7,
+   "cost": 0.0,
+   "input_tokens": 129503,
+   "output_tokens": 5806,
+   "calls": 17,
+   "repairs": 0,
+   "started_at": 1788185148.7077806,
+   "outcome": {
+    "criteria_marked": 6,
+    "provisional_total": 77.0,
+    "flagged_for_human": 1,
+    "claim_keys": [
+     "intro=Excellent (70+): aims are specific, motivated and testable",
+     "litreview=Good (60-69): relevant and broadly critical",
+     "method=Excellent (70+): justified against alternatives, reproducible",
+     "reflection=Absent (0)",
+     "results=Good (60-69): sound evaluation, some overclaiming",
+     "writing=Excellent (70+): professional throughout"
+    ]
+   }
+  }
+ ]
+}
