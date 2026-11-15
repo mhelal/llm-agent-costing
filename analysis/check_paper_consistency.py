@@ -175,6 +175,49 @@ def main() -> int:
             if w == "2" and base:
                 check(f"{camp} 1->2 reduction", f"{100*(base-T)/base:.1f}", flat)
 
+    # ---- 3b. failure causes (from run_outcomes.csv if present) -----------
+    oc_path = os.path.join(os.path.dirname(a.events), "run_outcomes.csv")
+    if os.path.exists(oc_path):
+        with open(oc_path, encoding="utf-8") as fh:
+            oc = list(csv.DictReader(fh))
+        causes = Counter(r["cause"] for r in oc)
+        check("completed runs", str(causes["completed"]), flat)
+        check("preflight refusals", str(causes["preflight_refused"]), flat)
+        check("all-workers-failed runs",
+              {3: "three", 2: "two", 1: "one"}.get(causes["all_workers_failed"], "?"),
+              flat, "paper spells this as a word")
+        if causes["unclassified"]:
+            FAIL.append(("every failure is classified",
+                         f"{causes['unclassified']} unclassified", ""))
+        else:
+            PASS.append(("every failure is classified", "0 unclassified"))
+        # the outage window and span the paper quotes
+        pre = [r for r in oc if r["cause"] == "preflight_refused"]
+        if pre:
+            # Use the recorded failure moment, not the job start.
+            stamps = [float(r["cause_utc"]) for r in pre if r.get("cause_utc")]
+            lo, hi = min(stamps), max(stamps)
+            import datetime as _dt
+            f = lambda t: _dt.datetime.fromtimestamp(
+                t, _dt.timezone.utc).strftime("%H:%M")
+            check("outage start", f(lo), flat)
+            check("outage end", f(hi), flat)
+            check("outage span (min)", str(round((hi - lo) / 60)), flat)
+            b = [r for r in oc if r["campaign"] == "Partitioning B"]
+            clo = min(float(r["started_utc"]) for r in b)
+            chi = max(float(r["ended_utc"]) for r in b)
+            check("campaign B span (min)", str(round((chi - clo) / 60)), flat)
+            cells_hit = len({r["cell"] for r in pre})
+            check("cells hit by outage",
+                  {8: "eight", 9: "nine", 7: "seven"}.get(cells_hit, "?"), flat,
+                  "paper spells this as a word")
+            if all(int(r["llm_calls"]) == 0 for r in pre):
+                PASS.append(("refused jobs made no model call",
+                             f"all {len(pre)} at 0 calls"))
+            else:
+                FAIL.append(("refused jobs made no model call",
+                             "some made calls", "paper says none did"))
+
     # ---- 4. things the paper states that the data must not contradict -----
     protocol_agent = raws["Protocol"][0]["spec"].get("agent")
     extract_agents = {raws[n][0]["spec"].get("agent")

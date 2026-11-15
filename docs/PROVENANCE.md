@@ -36,7 +36,32 @@ they count different units. `verify_paper_claims.py` deliberately reports per
 cell, matching the paper, and says so in its output. If you ever see 6.6–16.0
 quoted against the paper, it is this, not a discrepancy.
 
-## 3. The efficiency ranking does not replicate
+## 3. Why the unsuccessful runs failed
+
+All 136 runs are classified in `data/events/run_outcomes.csv`, from each
+run's own terminal event. None is unclassified.
+
+| Cause | Runs | Model calls made |
+|---|---|---|
+| completed | 111 | — |
+| `preflight_refused` | 19 | 0 |
+| `all_workers_failed` | 3 | 12 each |
+| `all_windows_unparseable` | 1 | 1 |
+| `empty_result_guard` | 1 | 3 |
+| `stage_failed_no_message` | 1 | 1 |
+
+The 19 refusals are one event. Between 03:03 and 04:08 UTC on 31 August the
+configured deep endpoint (`nvidia/nemotron-3-ultra-550b-a55b`) answered 404,
+and the harness refused to start any job whose configuration it could not
+satisfy. Those jobs made **zero** model calls — which is why campaign B shows
+45 attempts but only 276 realised calls, against campaign A's 27 and 462.
+
+The same endpoint served 249 calls successfully before and after that hour,
+including campaign Role sizing B at 11:22 the same morning. It was transient
+unavailability, not a catalogue withdrawal. Only the call log distinguishes
+the two.
+
+## 4. The efficiency ranking does not replicate
 
 The quality ordering (6k = quantity, 14k = fidelity, 28k = collapse)
 replicates in both partitioning campaigns. The efficiency ranking reverses:
@@ -49,17 +74,23 @@ replicates in both partitioning campaigns. The efficiency ranking reverses:
 | 14k, 2 workers | 31.55 s | 25.33 s |
 | 14k, 4 workers | 25.71 s | 37.04 s (n=1) |
 
-The cause is survivorship. Campaign B lost 20 of 45 attempts unevenly: both
-14k single- and four-worker cells retain exactly one successful run each, at
-743.3 s and 629.6 s against 469.8 s and 577.3 s for the same cells in
-campaign A. Where most attempts in a cell fail, the completions are not a
-random sample of that cell.
+The cause is the outage in section 3, not context size. It covered the final
+65 minutes of a 207-minute campaign and, because cells run in randomised
+order, removed attempts from eight of the nine cells; the 14k single- and
+four-worker cells were each left with one successful run.
+
+An earlier draft of this file called it survivorship bias. That was wrong,
+and the distinction matters: an outage is independent of the factor under
+test, so the surviving runs are **not** skewed toward particular
+configurations. They are simply too few. At n = 1 a cell mean is one
+observation, and the reversal is small-sample noise rather than systematic
+bias.
 
 The paper therefore reports E_v from campaign A only, and §V-A states the
 non-replication explicitly. The abstract and conclusion are scoped to "the
 failure-free campaign". **Do not generalise the E_v ranking across campaigns.**
 
-## 4. What was deliberately left out, and why
+## 5. What was deliberately left out, and why
 
 **The application database.** `suite.db` holds 4,411 rows across tables for
 students (170), submissions (1,922), marking records (1,962), legal matters,
@@ -81,12 +112,25 @@ personal data handling. Stripping those imports would produce code that did
 not run these experiments. `src/` contains verbatim excerpts instead, each
 tagged with its source file and line range.
 
-## 5. Unresolved
+## 6. Regenerating the exports
 
-**Campaign B's 20 failures have no recorded cause in this package.** The
-failure classification exists in the full event log (`llm_error`,
-`validation_failed`, `window_unparseable` events) but was not exported here,
-and the paper does not name a cause. If the original database is still
-available, that is the one gap worth closing: §IV-A would be stronger for
-naming what went wrong, and campaign B's survivorship effect currently rests
-on an unexplained failure rate.
+Both export scripts need the live database, which is not published. If you
+have it:
+
+```bash
+python3 analysis/export_events.py   --db /path/to/suite.db --outputs data/raw \
+    --out data/events/calls.csv
+python3 analysis/export_outcomes.py --db /path/to/suite.db --outputs data/raw \
+    --out data/events/run_outcomes.csv
+python3 analysis/check_paper_consistency.py     # must stay at 0 failed
+```
+
+`export_outcomes.py` records `cause_utc`, the moment a failure was logged,
+separately from the job's start. The paper's outage window is quoted from
+`cause_utc`; using job start instead shifts it by a minute. The consistency
+checker caught exactly that discrepancy, which is why the column exists.
+
+## 7. Open
+
+Nothing outstanding. The one gap flagged in the first version of this file --
+the unexplained failure rate in campaign B -- is closed in section 3.

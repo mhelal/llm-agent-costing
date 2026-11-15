@@ -13,7 +13,7 @@ python3 analysis/check_paper_consistency.py      # assert the paper matches
 ```
 
 The second command exits non-zero if any number in `paper/` disagrees with
-`data/`. It currently reports **45 passed, 0 failed**.
+`data/`. It currently reports **55 passed, 0 failed**.
 
 ---
 
@@ -99,11 +99,45 @@ Stated here so they are not discovered later:
   on one or two successful runs; their standard deviations are zero by
   construction, not by precision.
 - The efficiency ranking does **not** replicate across the two partitioning
-  campaigns. The quality ordering does. See `docs/PROVENANCE.md`.
+  campaigns; the quality ordering does. The cause is a 65-minute endpoint
+  outage that truncated campaign B, not a property of context size. See
+  `docs/PROVENANCE.md`.
+- 19 of the 25 unsuccessful runs never made a model call: they were refused
+  at preflight while the configured deep endpoint returned 404.
+  `data/events/run_outcomes.csv` classifies all 136 runs, none unclassified.
 - Verbatim fidelity is a deterministic substring criterion. It is not a
   semantic-correctness judgement, and no human-annotated subset exists.
 - No TTFT/ITL telemetry was available, so the prefill/decode coefficients in
   the paper's Eq. 3 are a proposed cost model, not a fitted decomposition.
+
+## Licensing
+
+Three kinds of material, three different terms:
+
+| Path | Licence | Why |
+|---|---|---|
+| `analysis/`, `src/` | MIT (`LICENSE`) | short, permissive, no obligations that would stop a practitioner reusing the scripts |
+| `data/` | CC BY 4.0 (`LICENSE-DATA`) | software licences fit code, not measurements; CC BY is the norm for research data and is what artefact tracks expect |
+| `paper/` | neither — see below | copyright transfers to IEEE on publication |
+
+`paper/` holds the accepted manuscript. On publication, copyright in it
+transfers to IEEE under the copyright form signed at camera-ready, so it is
+**not** covered by the two licences above and must not be relicensed. IEEE
+policy permits authors to post their own accepted version with the required
+notice; add that notice to `paper/` once the proceedings notice text is issued.
+
+Two things worth checking before pushing publicly:
+
+- **Employment IP.** Work produced in the course of employment often vests in
+  the employer rather than the author. If University of Hertfordshire policy
+  applies to this code, the copyright line may need to name the university, or
+  the release may need its approval. MIT is easy to grant and effectively
+  impossible to revoke once published.
+- **Patent grant.** If a patent grant matters to you or your institution,
+  Apache-2.0 is the better choice for `analysis/` and `src/` — it is MIT plus
+  an explicit patent licence and a NOTICE mechanism. MIT is chosen here
+  because it is shorter, more widely understood, and nothing in this
+  repository is patentable subject matter.
 
 ## Citation
 
